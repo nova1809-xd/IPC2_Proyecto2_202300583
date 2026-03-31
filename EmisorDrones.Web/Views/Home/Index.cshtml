@@ -1,10 +1,17 @@
+@using EmisorDrones.CoreBusiness.Configuration
+@using EmisorDrones.Web.Helpers
+
 @{
     ViewData["Title"] = "Dashboard - Inicio";
 }
 
 <h1>🚁 Bienvenido al Emisor de Drones</h1>
 
-<p>Sistema inteligente de coordinación de drones para transmisión de mensajes por luz.</p>
+<p>sistema inteligente de coordinación de drones para transmisión de mensajes por luz.</p>
+
+<div style="background-color: #e8f4f8; padding: 1rem; border-radius: 4px; margin-bottom: 2rem; border-left: 4px solid #667eea;">
+    <strong>📍 Release Actual:</strong> @FeatureFlagHelper.GetCurrentReleaseLabel() - @FeatureFlagHelper.GetCurrentReleaseDescription()
+</div>
 
 <h2>📊 Estado del Sistema</h2>
 
@@ -25,26 +32,51 @@
     </div>
 </div>
 
-<h2>🎯 Acciones Rápidas</h2>
+<h2>🎯 Acciones Disponibles</h2>
 
 <div class="grid">
-    <div>
-        <h3>Gestionar Drones</h3>
-        <p>Ver lista de drones, agregar nuevos, editar o eliminar.</p>
-        <a href="/Home/GestionarDrones" class="btn btn-primary">Ir a Gestión</a>
-    </div>
+    @if (FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.GestionarDrones))
+    {
+        <div>
+            <h3>Gestionar Drones</h3>
+            <p>ver lista de drones, agregar nuevos, editar o eliminar.</p>
+            <a href="/Home/GestionarDrones" class="btn btn-primary">Ir a Gestión</a>
+        </div>
+    }
 
-    <div>
-        <h3>Configurar Sistema</h3>
-        <p>Definir mapeo de letras a alturas (próximamente en Release 2).</p>
-        <button class="btn btn-secondary" disabled>Próximamente</button>
-    </div>
+    @if (FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.GestionarSistemas))
+    {
+        <div>
+            <h3>Configurar Sistema</h3>
+            <p>definir mapeo de letras a alturas.</p>
+            <a href="/Home/GestionarSistemas" class="btn btn-primary">Ir a Sistemas</a>
+        </div>
+    }
+    else
+    {
+        <div>
+            <h3>Configurar Sistema</h3>
+            <p>definir mapeo de letras a alturas (próximamente en Release 2).</p>
+            <button class="btn btn-secondary" disabled>Próximamente</button>
+        </div>
+    }
 
-    <div>
-        <h3>Procesar Mensajes</h3>
-        <p>Cargar mensajes y calcular instrucciones optimizadas (próximamente en Release 3).</p>
-        <button class="btn btn-secondary" disabled>Próximamente</button>
-    </div>
+    @if (FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.ProcesarMensajes))
+    {
+        <div>
+            <h3>Procesar Mensajes</h3>
+            <p>cargar mensajes y calcular instrucciones optimizadas.</p>
+            <a href="/Home/ProcesarMensajes" class="btn btn-primary">Ir a Mensajes</a>
+        </div>
+    }
+    else
+    {
+        <div>
+            <h3>Procesar Mensajes</h3>
+            <p>cargar mensajes y calcular instrucciones optimizadas (próximamente en Release 3).</p>
+            <button class="btn btn-secondary" disabled>Próximamente</button>
+        </div>
+    }
 </div>
 
 <hr style="margin: 2rem 0; border: 1px solid #ddd;">
@@ -63,11 +95,19 @@
     <li><strong>Restricción de Concurrencia:</strong> Solo 1 dron puede emitir luz por segundo</li>
 </ul>
 
-<h2>📌 Próximas Fases</h2>
+<h2>📌 Roadmap de Desarrollo</h2>
 
-<div style="background-color: #def1f7; padding: 1.5rem; border-left: 4px solid #667eea; border-radius: 4px;">
-    <p><strong>Release 1 (Actual):</strong> Infraestructura base, TDAs y gestión de drones ✓</p>
-    <p><strong>Release 2:</strong> Configuración de sistemas de letras-alturas</p>
-    <p><strong>Release 3:</strong> Algoritmo de optimización y procesamiento de mensajes</p>
-    <p><strong>Release 4:</strong> Visualización con Graphviz y exportación XML</p>
+<div class="grid">
+    <div style="background-color: @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.Dashboard) ? "#d4edda" : "#f8f9fa"); padding: 1.5rem; border-radius: 4px; border-left: 4px solid @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.Dashboard) ? "#28a745" : "#ddd");">
+        <p><strong>Release 1:</strong> Infraestructura base, TDAs y gestión de drones @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.Dashboard) ? "✓" : "⏱")</p>
+    </div>
+    <div style="background-color: @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.GestionarSistemas) ? "#d4edda" : "#f8f9fa"); padding: 1.5rem; border-radius: 4px; border-left: 4px solid @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.GestionarSistemas) ? "#28a745" : "#ddd");">
+        <p><strong>Release 2:</strong> Configuración de sistemas de letras-alturas @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.GestionarSistemas) ? "✓" : "⏱")</p>
+    </div>
+    <div style="background-color: @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.ProcesarMensajes) ? "#d4edda" : "#f8f9fa"); padding: 1.5rem; border-radius: 4px; border-left: 4px solid @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.ProcesarMensajes) ? "#28a745" : "#ddd");">
+        <p><strong>Release 3:</strong> Algoritmo de optimización y procesamiento de mensajes @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.ProcesarMensajes) ? "✓" : "⏱")</p>
+    </div>
+    <div style="background-color: @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.SimulacionPasoAPaso) ? "#d4edda" : "#f8f9fa"); padding: 1.5rem; border-radius: 4px; border-left: 4px solid @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.SimulacionPasoAPaso) ? "#28a745" : "#ddd");">
+        <p><strong>Release 4:</strong> Visualización con Graphviz y exportación XML @(FeatureFlagHelper.IsAvailable(FeatureFlags.Feature.SimulacionPasoAPaso) ? "✓" : "⏱")</p>
+    </div>
 </div>

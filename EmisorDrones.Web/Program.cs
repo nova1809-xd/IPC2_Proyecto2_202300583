@@ -1,8 +1,9 @@
 using EmisorDrones.CoreBusiness.Services;
+using EmisorDrones.CoreBusiness.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar servicios
+// agregar servicios
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ServicioDrones>();
 builder.Services.AddSession(options =>

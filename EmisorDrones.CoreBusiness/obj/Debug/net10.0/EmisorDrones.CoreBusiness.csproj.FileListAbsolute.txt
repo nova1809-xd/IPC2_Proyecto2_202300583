@@ -9,3 +9,4 @@ C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\refint\EmisorDrones.CoreBusiness.dll
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.pdb
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\ref\EmisorDrones.CoreBusiness.dll
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.sourcelink.json

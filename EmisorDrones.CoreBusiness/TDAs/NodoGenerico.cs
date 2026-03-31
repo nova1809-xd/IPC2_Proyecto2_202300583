@@ -1,32 +1,31 @@
 namespace EmisorDrones.CoreBusiness.TDAs
 {
     /// <summary>
-    /// Estructura base de nodo genérico para implementar memoria dinámica.
-    /// Permite referencias bidireccionales (anterior y siguiente).
-    /// Restricción: No se usa memoria estándar de C# para nodos - es construcción manual.
+    /// nodo genérico base para hacer memoria dinámica.
+    /// tiene referencias bidireccionales así puedo encadenar nodos hacia adelante y atrás.
     /// </summary>
-    /// <typeparam name="T">Tipo de dato que almacenará el nodo</typeparam>
+    /// <typeparam name="T">el tipo de dato que va a guardar el nodo</typeparam>
     public class NodoGenerico<T>
     {
         /// <summary>
-        /// Datos almacenados en el nodo
+        /// datos que contiene este nodo
         /// </summary>
         public T Dato { get; set; }
 
         /// <summary>
-        /// Referencia al nodo siguiente (derecha en lista)
+        /// referencia al próximo nodo a la derecha
         /// </summary>
         public NodoGenerico<T> Siguiente { get; set; }
 
         /// <summary>
-        /// Referencia al nodo anterior (izquierda en lista)
+        /// referencia al nodo anterior a la izquierda
         /// </summary>
         public NodoGenerico<T> Anterior { get; set; }
 
         /// <summary>
-        /// Constructor que inicializa el nodo con un dato específico
+        /// inicializa un nodo con el dato que le pasas
         /// </summary>
-        /// <param name="dato">Dato a almacenar en el nodo</param>
+        /// <param name="dato">dato a guardar en el nodo</param>
         public NodoGenerico(T dato)
         {
             this.Dato = dato;
@@ -35,9 +34,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna una representación en texto del nodo
+        /// retorna el contenido del nodo como texto
         /// </summary>
-        /// <returns>String con el valor del dato</returns>
+        /// <returns>valor del dato como string</returns>
         public override string ToString()
         {
             return Dato?.ToString() ?? "null";

@@ -32,3 +32,4 @@ C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.pdb
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.genruntimeconfig.cache
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\ref\EmisorDrones.Web.dll
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.sourcelink.json
