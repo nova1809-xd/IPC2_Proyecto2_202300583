@@ -1,0 +1,164 @@
+@{
+    ViewData["Title"] = "Acerca de";
+}
+
+<h1>ℹ️ Acerca de - Emisor de Drones</h1>
+
+<h2>Descripción del Proyecto</h2>
+
+<p>
+    Este proyecto es una solución universitaria integrada para coordinar un sistema de drones que transmiten mensajes mediante emisión de luz.
+    Se trata de un ejercicio académico enfocado en arquitectura de software, estructuras de datos dinámicas y construcción de interfaces web modernas.
+</p>
+
+<h2>🎯 Objetivo</h2>
+
+<p>
+    Construir un sistema que permita:
+</p>
+
+<ul style="margin-left: 2rem; line-height: 1.8;">
+    <li>Gestionar hasta <strong>200 drones</strong> que operan en alturas entre 1 y 100 metros</li>
+    <li>Calcular la secuencia óptima de instrucciones para transmitir un mensaje en tiempo mínimo</li>
+    <li>Respetar la restricción de que solo <strong>1 dron puede emitir luz por segundo</strong></li>
+    <li>Visualizar gráficamente los sistemas de drones y sus instrucciones</li>
+    <li>Exportar resultados en formato XML</li>
+</ul>
+
+<h2>⚙️ Restricciones Técnicas (Reglas de Oro)</h2>
+
+<div style="background-color: #fff3cd; padding: 1.5rem; border-left: 4px solid #ff9800; border-radius: 4px; margin: 1rem 0;">
+    <ol style="margin-left: 2rem;">
+        <li>
+            <strong>PROHIBIDO usar estructuras de datos nativas:</strong>
+            Se implementan todos los TDAs (Lista, Cola, Pila, etc.) desde cero usando nodos y punteros.
+            <em style="color: #666;">No se usa: List\<T\>, LinkedList\<T\>, Queue\<T\>, Stack\<T\>, Dictionary\<K,V\></em>
+        </li>
+        <li>
+            <strong>Programación Orientada a Objetos obligatoria:</strong>
+            Arquitectura modular con herencia, interfaces y encapsulamiento.
+        </li>
+        <li>
+            <strong>Interfaz web requerida:</strong>
+            ASP.NET Core con patrón MVC para todas las interacciones.
+        </li>
+        <li>
+            <strong>Graphviz obligatorio:</strong>
+            Generación de gráficos DOT para visualización de sistemas e instrucciones.
+        </li>
+    </ol>
+</div>
+
+<h2>🚀 Arquitectura en 4 Releases</h2>
+
+<div style="margin: 1.5rem 0;">
+    <h3>Release 1: Fundación (En Desarrollo ✓)</h3>
+    <p><strong>Objetivo:</strong> Infraestructura base y gestión de drones</p>
+    <ul style="margin-left: 2rem;">
+        <li>Implementación de TDAs: NodoGenérico, ListaEnlazada, ColaDinamica, PilaDinamica</li>
+        <li>Clases de negocio: Drone, Instruccion, RegistroDrone</li>
+        <li>Servicio de gestión de drones (CRUD)</li>
+        <li>Interfaz web: Dashboard básico, gestión de drones</li>
+    </ul>
+</div>
+
+<div style="margin: 1.5rem 0;">
+    <h3>Release 2: Sistemas de Mapeo (Próximo)</h3>
+    <p><strong>Objetivo:</strong> Configuración de letras a alturas</p>
+    <ul style="margin-left: 2rem;">
+        <li>TDAs para mapeo: NodoMapa, MapaDinamico, NodoGrafo</li>
+        <li>Sistema de configuración: SistemaDrones, MapeoLetra, Validación</li>
+        <li>Visualización Graphviz de relaciones letra→altura→dron</li>
+    </ul>
+</div>
+
+<div style="margin: 1.5rem 0;">
+    <h3>Release 3: Procesamiento (Próximo)</h3>
+    <p><strong>Objetivo:</strong> Algoritmo de optimización</p>
+    <ul style="margin-left: 2rem;">
+        <li>TDAs para grafos: GrafoDAG, MatrizDinamica</li>
+        <li>Algoritmo de coordinación que calcula tiempo mínimo</li>
+        <li>Simulador de pre-visualización</li>
+    </ul>
+</div>
+
+<div style="margin: 1.5rem 0;">
+    <h3>Release 4: Visualización (Próximo)</h3>
+    <p><strong>Objetivo:</strong> Simulación visual y exportación</p>
+    <ul style="margin-left: 2rem;">
+        <li>Simulación paso a paso con visualización en tiempo real</li>
+        <li>Gráficos Graphviz avanzados: Timeline, Heatmaps</li>
+        <li>Exportación a XML con detalles segundo a segundo</li>
+    </ul>
+</div>
+
+<h2>💻 Stack Tecnológico</h2>
+
+<table style="width: 100%; margin: 1rem 0;">
+    <tr>
+        <td style="font-weight: bold; width: 30%;">Lenguaje:</td>
+        <td>C# 12+</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Framework Web:</td>
+        <td>ASP.NET Core 8.0+</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Patrón:</td>
+        <td>MVC (Model-View-Controller)</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Base de Datos:</td>
+        <td>En memoria (Scoped Services)</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Visualización:</td>
+        <td>Graphviz (Formato DOT)</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Formato Salida:</td>
+        <td>XML</td>
+    </tr>
+</table>
+
+<h2>👨‍💼 Rol: Tutor Senior</h2>
+
+<p>
+    El asistente actúa como Arquitecto de Software y Tutor Senior especializado en C# y desarrollo web.
+    Su responsabilidad es:
+</p>
+
+<ul style="margin-left: 2rem;">
+    <li>Guiar el desarrollo paso a paso mediante instrucciones claras</li>
+    <li>Validar que se cumplan las restricciones técnicas</li>
+    <li>Explicar decisiones arquitectónicas y patrones</li>
+    <li>Prevenir deudas técnicas y errores graves</li>
+    <li>Fomentar mejores prácticas en POO y diseño</li>
+</ul>
+
+<h2>📅 Información General</h2>
+
+<table>
+    <tr>
+        <td style="font-weight: bold; width: 30%;">Asignatura:</td>
+        <td>IPC2 (Introducción a Programación de Computadores 2)</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Proyecto:</td>
+        <td>Proyecto 2 - Emisor de Drones</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Carné Estudiante:</td>
+        <td>202300583</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Año Académico:</td>
+        <td>2026</td>
+    </tr>
+</table>
+
+<hr style="margin: 2rem 0;">
+
+<p style="text-align: center; color: #666; font-size: 0.9rem;">
+    &copy; 2026 - Proyecto Académico | Emisor de Drones | Desarrollo Universitario
+</p>

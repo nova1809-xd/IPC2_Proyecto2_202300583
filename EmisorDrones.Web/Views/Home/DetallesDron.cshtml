@@ -1,0 +1,101 @@
+@model Drone
+
+@{
+    ViewData["Title"] = "Detalles del Dron #" + Model.Id;
+}
+
+<h1>🛸 Detalles del Dron #@Model.Id</h1>
+
+<div class="grid">
+    <div class="card">
+        <div class="card-title">ID del Dron</div>
+        <div class="card-value">@Model.Id</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Estado</div>
+        <div class="card-value">@(Model.Activo ? "✓ Activo" : "✗ Inactivo")</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Altura Actual</div>
+        <div class="card-value">@Model.AlturaActual m</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Veces Emitió Luz</div>
+        <div class="card-value">@Model.VecesEmitioLuz</div>
+    </div>
+</div>
+
+<hr style="margin: 2rem 0;">
+
+<h2>📋 Información Operativa</h2>
+
+<table>
+    <tr>
+        <td style="font-weight: bold; width: 30%;">Altura Mínima:</td>
+        <td>@Model.AlturaMinima metros</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Altura Máxima:</td>
+        <td>@Model.AlturaMaxima metros</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Rango Operativo:</td>
+        <td>@Model.AlturaMinima - @Model.AlturaMaxima metros</td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">Instrucciones Ejecutadas:</td>
+        <td>@Model.HistorialInstrucciones.Cantidad</td>
+    </tr>
+</table>
+
+<hr style="margin: 2rem 0;">
+
+<h2>📝 Historial de Instrucciones</h2>
+
+@if (Model.HistorialInstrucciones.Cantidad > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tiempo (s)</th>
+                <th>Instrucción</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var instrucciones = Model.ObtenerHistorial();
+                for (int i = 0; i < instrucciones.Length; i++)
+                {
+                    var instr = instrucciones[i];
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@instr.Tiempo</td>
+                        <td><strong>@instr.Tipo</strong></td>
+                        <td>@instr.ObtenerDescripcion()</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        Este dron aún no ha ejecutado instrucciones.
+    </div>
+}
+
+<hr style="margin: 2rem 0;">
+
+<div style="display: flex; gap: 1rem;">
+    <a href="/Home/GestionarDrones" class="btn btn-secondary">← Volver a Gestión</a>
+    <form method="POST" action="/Home/EliminarDron" style="display: inline; margin: 0;">
+        <input type="hidden" name="id" value="@Model.Id">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el dron #@Model.Id?');">🗑️ Eliminar Dron</button>
+    </form>
+</div>

@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Dashboard - Inicio";
+}
+
+<h1>🚁 Bienvenido al Emisor de Drones</h1>
+
+<p>Sistema inteligente de coordinación de drones para transmisión de mensajes por luz.</p>
+
+<h2>📊 Estado del Sistema</h2>
+
+<div class="grid">
+    <div class="card">
+        <div class="card-title">Total de Drones Registrados</div>
+        <div class="card-value">@ViewBag.CantidadDrones</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Capacidad del Sistema</div>
+        <div class="card-value">@(200 - ViewBag.CantidadDrones)</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Estado General</div>
+        <div class="card-value">@(ViewBag.TieneCapacidad ? "✓ Activo" : "⚠ Lleno")</div>
+    </div>
+</div>
+
+<h2>🎯 Acciones Rápidas</h2>
+
+<div class="grid">
+    <div>
+        <h3>Gestionar Drones</h3>
+        <p>Ver lista de drones, agregar nuevos, editar o eliminar.</p>
+        <a href="/Home/GestionarDrones" class="btn btn-primary">Ir a Gestión</a>
+    </div>
+
+    <div>
+        <h3>Configurar Sistema</h3>
+        <p>Definir mapeo de letras a alturas (próximamente en Release 2).</p>
+        <button class="btn btn-secondary" disabled>Próximamente</button>
+    </div>
+
+    <div>
+        <h3>Procesar Mensajes</h3>
+        <p>Cargar mensajes y calcular instrucciones optimizadas (próximamente en Release 3).</p>
+        <button class="btn btn-secondary" disabled>Próximamente</button>
+    </div>
+</div>
+
+<hr style="margin: 2rem 0; border: 1px solid #ddd;">
+
+<h2>ℹ️ Información del Sistema</h2>
+
+<pre style="background-color: #f8f9fa; padding: 1rem; border-radius: 4px; overflow-x: auto;">@ViewBag.Resumen</pre>
+
+<h2>📋 Requisitos del Sistema</h2>
+
+<ul style="margin-left: 2rem; line-height: 2;">
+    <li><strong>Capacidad:</strong> Hasta 200 drones</li>
+    <li><strong>Altura Operativa:</strong> 1 a 100 metros</li>
+    <li><strong>Acciones por Dron:</strong> Subir, Bajar, Esperar, Emitir Luz</li>
+    <li><strong>Tiempo por Acción:</strong> 1 segundo exactamente</li>
+    <li><strong>Restricción de Concurrencia:</strong> Solo 1 dron puede emitir luz por segundo</li>
+</ul>
+
+<h2>📌 Próximas Fases</h2>
+
+<div style="background-color: #def1f7; padding: 1.5rem; border-left: 4px solid #667eea; border-radius: 4px;">
+    <p><strong>Release 1 (Actual):</strong> Infraestructura base, TDAs y gestión de drones ✓</p>
+    <p><strong>Release 2:</strong> Configuración de sistemas de letras-alturas</p>
+    <p><strong>Release 3:</strong> Algoritmo de optimización y procesamiento de mensajes</p>
+    <p><strong>Release 4:</strong> Visualización con Graphviz y exportación XML</p>
+</div>

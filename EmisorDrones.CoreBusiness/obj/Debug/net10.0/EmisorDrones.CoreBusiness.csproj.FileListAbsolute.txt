@@ -1,0 +1,11 @@
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.AssemblyInfoInputs.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.AssemblyInfo.cs
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\bin\Debug\net10.0\EmisorDrones.CoreBusiness.deps.json
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\bin\Debug\net10.0\EmisorDrones.CoreBusiness.dll
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\bin\Debug\net10.0\EmisorDrones.CoreBusiness.pdb
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.dll
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\refint\EmisorDrones.CoreBusiness.dll
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\EmisorDrones.CoreBusiness.pdb
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.CoreBusiness\obj\Debug\net10.0\ref\EmisorDrones.CoreBusiness.dll

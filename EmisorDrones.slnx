@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EmisorDrones.CoreBusiness/EmisorDrones.CoreBusiness.csproj" />
+  <Project Path="EmisorDrones.Web/EmisorDrones.Web.csproj" />
+</Solution>

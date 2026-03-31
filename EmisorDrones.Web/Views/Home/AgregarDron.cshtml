@@ -1,0 +1,65 @@
+@model dynamic
+
+@{
+    ViewData["Title"] = "Agregar Nuevo Dron";
+}
+
+<h1>➕ Agregar Nuevo Dron</h1>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-error">
+        <strong>Por favor corrija los siguientes errores:</strong>
+        <ul style="margin: 0.5rem 0; margin-left: 1.5rem;">
+            @foreach (var modelState in ViewData.ModelState.Values)
+            {
+                @foreach (var error in modelState.Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            }
+        </ul>
+    </div>
+}
+
+<form method="POST">
+    <div class="form-group">
+        <label for="id">ID del Dron (Único, >0)</label>
+        <input type="number" id="id" name="id" required min="1" max="999" placeholder="Ej: 1, 2, 3..." value="@ViewBag.id">
+    </div>
+
+    <div class="form-group">
+        <label for="alturaMinima">Altura Mínima Operativa (1-100 metros)</label>
+        <input type="number" id="alturaMinima" name="alturaMinima" required min="1" max="100" placeholder="Ej: 10" value="@ViewBag.alturaMinima">
+        <small class="text-muted">El dron comenzará a esta altura</small>
+    </div>
+
+    <div class="form-group">
+        <label for="alturaMaxima">Altura Máxima Operativa (1-100 metros)</label>
+        <input type="number" id="alturaMaxima" name="alturaMaxima" required min="1" max="100" placeholder="Ej: 50" value="@ViewBag.alturaMaxima">
+        <small class="text-muted">El dron no puede superar esta altura</small>
+    </div>
+
+    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <button type="submit" class="btn btn-primary">✓ Agregar Dron</button>
+        <a href="/Home/GestionarDrones" class="btn btn-secondary">← Cancelar</a>
+    </div>
+</form>
+
+<hr style="margin: 2rem 0;">
+
+<h2>ℹ️ Información</h2>
+
+<div style="background-color: #def1f7; padding: 1rem; border-left: 4px solid #667eea; border-radius: 4px; margin-top: 1rem;">
+    <p><strong>Restricciones:</strong></p>
+    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+        <li>El ID debe ser único (no puede duplicarse)</li>
+        <li>Altura mínima debe ser menor o igual a altura máxima</li>
+        <li>Ambas alturas deben estar entre 1 y 100 metros</li>
+        <li>Capacidad máxima del sistema: 200 drones</li>
+    </ul>
+</div>
+
+<div style="background-color: #ffe5e5; padding: 1rem; border-left: 4px solid #e74c3c; border-radius: 4px; margin-top: 1rem;">
+    <p><strong>⚠️ Nota:</strong> Los drones se almacenan en memoria del servidor. Al reiniciar la aplicación se perderán todos los registros.</p>
+</div>

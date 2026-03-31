@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "EmisorDrones.Web/1.0.0": {
+        "dependencies": {
+          "EmisorDrones.CoreBusiness": "1.0.0"
+        },
+        "runtime": {
+          "EmisorDrones.Web.dll": {}
+        }
+      },
+      "EmisorDrones.CoreBusiness/1.0.0": {
+        "runtime": {
+          "EmisorDrones.CoreBusiness.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EmisorDrones.Web/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EmisorDrones.CoreBusiness/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
