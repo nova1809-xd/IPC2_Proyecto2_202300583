@@ -1,12 +1,3 @@
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.csproj.AssemblyReference.cache
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.AssemblyInfoInputs.cache
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.AssemblyInfo.cs
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.csproj.CoreCompileInputs.cache
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.RazorAssemblyInfo.cache
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.RazorAssemblyInfo.cs
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\bin\Debug\net10.0\appsettings.json
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\bin\Debug\net10.0\EmisorDrones.Web.staticwebassets.endpoints.json
@@ -17,6 +8,16 @@ C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\bin\Debug\net10.0\EmisorDrones.Web.pdb
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\bin\Debug\net10.0\EmisorDrones.CoreBusiness.dll
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\bin\Debug\net10.0\EmisorDrones.CoreBusiness.pdb
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.csproj.AssemblyReference.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.AssemblyInfoInputs.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.AssemblyInfo.cs
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.RazorAssemblyInfo.cache
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.RazorAssemblyInfo.cs
+C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.sourcelink.json
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -32,4 +33,3 @@ C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.pdb
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.genruntimeconfig.cache
 C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\ref\EmisorDrones.Web.dll
-C:\Users\angel\OneDrive\Documentos\GitHub\IPC2_Proyecto2_202300583\EmisorDrones.Web\obj\Debug\net10.0\EmisorDrones.Web.sourcelink.json

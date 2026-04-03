@@ -1,10 +1,10 @@
-﻿@model Drone[]
+﻿@model EmisorDrones.CoreBusiness.TDAs.ListaEnlazada<Drone>
 
 @{
-    ViewData["Title"] = "Gestin de Drones";
+    ViewData["Title"] = "Gestion de Drones";
 }
 
-<h1>Gestin de Drones</h1>
+<h1>Gestion de Drones</h1>
 
 @if (TempData["Mensaje"] != null)
 {
@@ -24,9 +24,9 @@
     <a href="/Home/AgregarDron" class="btn btn-primary">+ Agregar Nuevo Dron</a>
 </div>
 
-@if (Model != null && Model.Length >0)
+@if (Model != null && Model.Cantidad > 0)
 {
-    <h2>Drones Registrados (@Model.Length)</h2>
+    <h2>Drones Registrados (@Model.Cantidad)</h2>
     <table>
         <thead>
             <tr>
@@ -39,28 +39,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var dron in Model)
-            {
-                <tr>
-                    <td>
-                        <strong>Dron #@dron.Id</strong>
-                    </td>
-                    <td>
-                        <span style="background-color: @(dron.Activo ? "#d4edda" : "#f8d7da"); padding: 0.25rem 0.5rem; border-radius: 4px; color: @(dron.Activo ? "#155724" : "#721c24");">
-                            @(dron.Activo ? " Activo" : " Inactivo")
-                        </span>
-                    </td>
-                    <td>@dron.AlturaActual m</td>
-                    <td>@dron.AlturaMinima - @dron.AlturaMaxima m</td>
-                    <td>@dron.VecesEmitioLuz veces</td>
-                    <td>
-                        <a href="/Home/DetallesDron/@dron.Id" class="btn btn-secondary btn-small">Ver Detalles</a>
-                        <form method="POST" action="/Home/EliminarDron" style="display: inline; margin: 0;">
-                            <input type="hidden" name="id" value="@dron.Id">
-                            <button type="submit" class="btn btn-danger btn-small" onclick="return confirm('Est seguro de eliminar el dron #@dron.Id?');">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
+            @{
+                var nodoActual = Model.Cabeza;
+                while (nodoActual != null)
+                {
+                    var dron = nodoActual.Dato;
+                    <tr>
+                        <td>
+                            <strong>Dron #@dron.Id</strong>
+                        </td>
+                        <td>
+                            <span style="background-color: @(dron.Activo ? "#d4edda" : "#f8d7da"); padding: 0.25rem 0.5rem; border-radius: 4px; color: @(dron.Activo ? "#155724" : "#721c24");">
+                                @(dron.Activo ? "Activo" : "Inactivo")
+                            </span>
+                        </td>
+                        <td>@dron.AlturaActual m</td>
+                        <td>@dron.AlturaMinima - @dron.AlturaMaxima m</td>
+                        <td>@dron.VecesEmitioLuz veces</td>
+                        <td>
+                            <a href="/Home/DetallesDron/@dron.Id" class="btn btn-secondary btn-small">Ver Detalles</a>
+                            <form method="POST" action="/Home/EliminarDron" style="display: inline; margin: 0;">
+                                <input type="hidden" name="id" value="@dron.Id">
+                                <button type="submit" class="btn btn-danger btn-small" onclick="return confirm('Esta seguro de eliminar el dron #@dron.Id?');">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    nodoActual = nodoActual.Siguiente;
+                }
             }
         </tbody>
     </table>

@@ -146,11 +146,11 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Obtiene el historial de instrucciones como array
+        /// obtiene el historial de instrucciones como lista enlazada
         /// </summary>
-        public Instruccion[] ObtenerHistorial()
+        public ListaEnlazada<Instruccion> ObtenerHistorial()
         {
-            return HistorialInstrucciones.ObtenerTodos();
+            return HistorialInstrucciones;
         }
 
         /// <summary>

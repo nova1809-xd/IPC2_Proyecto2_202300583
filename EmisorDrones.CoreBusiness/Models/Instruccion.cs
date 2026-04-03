@@ -49,6 +49,11 @@ namespace EmisorDrones.CoreBusiness.Models
         public int DronId { get; set; }
 
         /// <summary>
+        /// altura objetivo que debe alcanzar el dron antes de emitir luz
+        /// </summary>
+        public int AlturaObjetivo { get; set; }
+
+        /// <summary>
         /// Constructor con parámetros
         /// </summary>
         /// <param name="tipo">Tipo de instrucción</param>
@@ -59,6 +64,15 @@ namespace EmisorDrones.CoreBusiness.Models
             this.Tipo = tipo;
             this.Tiempo = tiempo;
             this.DronId = dronId;
+            this.AlturaObjetivo = -1;
+        }
+
+        public Instruccion(TipoInstruccion tipo, int tiempo, int dronId, int alturaObjetivo)
+        {
+            this.Tipo = tipo;
+            this.Tiempo = tiempo;
+            this.DronId = dronId;
+            this.AlturaObjetivo = alturaObjetivo;
         }
 
         /// <summary>

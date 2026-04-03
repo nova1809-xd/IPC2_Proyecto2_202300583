@@ -38,6 +38,11 @@ namespace EmisorDrones.CoreBusiness.TDAs
         public int Cantidad => cantidad;
 
         /// <summary>
+        /// permite recorrer la lista desde el primer nodo
+        /// </summary>
+        public NodoGenerico<T> Cabeza => cabeza;
+
+        /// <summary>
         /// Verifica si la lista está vacía
         /// </summary>
         public bool EstaVacia => cantidad == 0;
@@ -271,32 +276,12 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene todos los elementos como array
-        /// </summary>
-        /// <returns>Array con copia de todos los elementos</returns>
-        public T[] ObtenerTodos()
-        {
-            T[] resultado = new T[cantidad];
-            NodoGenerico<T> actual = cabeza;
-            int indice = 0;
-
-            while (actual != null)
-            {
-                resultado[indice] = actual.Dato;
-                actual = actual.Siguiente;
-                indice++;
-            }
-
-            return resultado;
-        }
-
-        /// <summary>
         /// Retorna una representación en texto de la lista
         /// </summary>
         public override string ToString()
         {
             if (EstaVacia)
-                return "[]";
+                return "vacia";
 
             string resultado = "[";
             NodoGenerico<T> actual = cabeza;

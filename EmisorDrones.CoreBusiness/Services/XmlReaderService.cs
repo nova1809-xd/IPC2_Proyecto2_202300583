@@ -358,12 +358,14 @@ namespace EmisorDrones.CoreBusiness.Services
 
         private bool ExisteNombreDrone(ListaEnlazada<string> listaDrones, string nombreDron)
         {
-            string[] drones = listaDrones.ObtenerTodos();
+            NodoGenerico<string> actual = listaDrones.Cabeza;
 
-            for (int i = 0; i < drones.Length; i++)
+            while (actual != null)
             {
-                if (string.Equals(drones[i], nombreDron, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(actual.Dato, nombreDron, StringComparison.OrdinalIgnoreCase))
                     return true;
+
+                actual = actual.Siguiente;
             }
 
             return false;
@@ -376,12 +378,14 @@ namespace EmisorDrones.CoreBusiness.Services
 
         private SistemaDronesConfig BuscarSistema(ListaEnlazada<SistemaDronesConfig> sistemas, string nombreSistema)
         {
-            SistemaDronesConfig[] arregloSistemas = sistemas.ObtenerTodos();
+            NodoGenerico<SistemaDronesConfig> actual = sistemas.Cabeza;
 
-            for (int i = 0; i < arregloSistemas.Length; i++)
+            while (actual != null)
             {
-                if (string.Equals(arregloSistemas[i].NombreSistema, nombreSistema, StringComparison.OrdinalIgnoreCase))
-                    return arregloSistemas[i];
+                if (string.Equals(actual.Dato.NombreSistema, nombreSistema, StringComparison.OrdinalIgnoreCase))
+                    return actual.Dato;
+
+                actual = actual.Siguiente;
             }
 
             return null;
@@ -389,12 +393,14 @@ namespace EmisorDrones.CoreBusiness.Services
 
         private bool ExisteDronEnSistema(SistemaDronesConfig sistema, string nombreDron)
         {
-            ContenidoSistemaDrones[] contenidos = sistema.Contenidos.ObtenerTodos();
+            NodoGenerico<ContenidoSistemaDrones> actual = sistema.Contenidos.Cabeza;
 
-            for (int i = 0; i < contenidos.Length; i++)
+            while (actual != null)
             {
-                if (string.Equals(contenidos[i].NombreDron, nombreDron, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(actual.Dato.NombreDron, nombreDron, StringComparison.OrdinalIgnoreCase))
                     return true;
+
+                actual = actual.Siguiente;
             }
 
             return false;

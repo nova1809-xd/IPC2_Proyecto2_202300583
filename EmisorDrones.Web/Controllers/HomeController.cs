@@ -1,5 +1,6 @@
 using EmisorDrones.CoreBusiness.Models;
 using EmisorDrones.CoreBusiness.Services;
+using EmisorDrones.CoreBusiness.TDAs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmisorDrones.Web.Controllers
@@ -36,7 +37,7 @@ namespace EmisorDrones.Web.Controllers
         /// </summary>
         public IActionResult GestionarDrones()
         {
-            Drone[] drones = _servicioDrones.ObtenerTodosDrones();
+            ListaEnlazada<Drone> drones = _servicioDrones.ObtenerTodosDrones();
             return View(drones);
         }
 

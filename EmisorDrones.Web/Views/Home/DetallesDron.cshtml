@@ -68,16 +68,20 @@
         </thead>
         <tbody>
             @{
-                var instrucciones = Model.ObtenerHistorial();
-                for (int i = 0; i < instrucciones.Length; i++)
+                var nodoInstruccion = Model.HistorialInstrucciones.Cabeza;
+                var indice = 1;
+                while (nodoInstruccion != null)
                 {
-                    var instr = instrucciones[i];
+                    var instr = nodoInstruccion.Dato;
                     <tr>
-                        <td>@(i + 1)</td>
+                        <td>@indice</td>
                         <td>@instr.Tiempo</td>
                         <td><strong>@instr.Tipo</strong></td>
                         <td>@instr.ObtenerDescripcion()</td>
                     </tr>
+
+                    indice++;
+                    nodoInstruccion = nodoInstruccion.Siguiente;
                 }
             }
         </tbody>

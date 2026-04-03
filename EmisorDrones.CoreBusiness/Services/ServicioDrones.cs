@@ -66,12 +66,14 @@ namespace EmisorDrones.CoreBusiness.Services
         /// <returns>Dron encontrado o null</returns>
         public Drone ObtenerDronPorId(int id)
         {
-            Drone[] todosDrones = drones.ObtenerTodos();
+            NodoGenerico<Drone> actual = drones.Cabeza;
 
-            foreach (Drone d in todosDrones)
+            while (actual != null)
             {
-                if (d.Id == id)
-                    return d;
+                if (actual.Dato.Id == id)
+                    return actual.Dato;
+
+                actual = actual.Siguiente;
             }
 
             return null;
@@ -80,10 +82,10 @@ namespace EmisorDrones.CoreBusiness.Services
         /// <summary>
         /// Obtiene todos los drones del sistema
         /// </summary>
-        /// <returns>Array con copia de todos los drones</returns>
-        public Drone[] ObtenerTodosDrones()
+        /// <returns>lista enlazada con los drones del sistema</returns>
+        public ListaEnlazada<Drone> ObtenerTodosDrones()
         {
-            return drones.ObtenerTodos();
+            return drones;
         }
 
         /// <summary>
@@ -100,19 +102,21 @@ namespace EmisorDrones.CoreBusiness.Services
         /// Obtiene drones que pueden alcanzar una altura específica
         /// </summary>
         /// <param name="altura">Altura a verificar</param>
-        /// <returns>Array de drones que pueden alcanzar la altura</returns>
-        public Drone[] ObtenerDronesQuePuedenAlcanzarAltura(int altura)
+        /// <returns>lista enlazada de drones que pueden alcanzar la altura</returns>
+        public ListaEnlazada<Drone> ObtenerDronesQuePuedenAlcanzarAltura(int altura)
         {
             ListaEnlazada<Drone> candidatos = new ListaEnlazada<Drone>();
-            Drone[] todosDrones = drones.ObtenerTodos();
+            NodoGenerico<Drone> actual = drones.Cabeza;
 
-            foreach (Drone d in todosDrones)
+            while (actual != null)
             {
-                if (d.PuedeAlcanzarAltura(altura))
-                    candidatos.AgregarAlFinal(d);
+                if (actual.Dato.PuedeAlcanzarAltura(altura))
+                    candidatos.AgregarAlFinal(actual.Dato);
+
+                actual = actual.Siguiente;
             }
 
-            return candidatos.ObtenerTodos();
+            return candidatos;
         }
 
         /// <summary>
@@ -122,15 +126,19 @@ namespace EmisorDrones.CoreBusiness.Services
         /// <returns>true si se eliminó, false si no existe</returns>
         public bool EliminarDron(int id)
         {
-            Drone[] todosDrones = drones.ObtenerTodos();
+            NodoGenerico<Drone> actual = drones.Cabeza;
+            int posicion = 0;
 
-            for (int i = 0; i < todosDrones.Length; i++)
+            while (actual != null)
             {
-                if (todosDrones[i].Id == id)
+                if (actual.Dato.Id == id)
                 {
-                    drones.EliminarEnPosicion(i);
+                    drones.EliminarEnPosicion(posicion);
                     return true;
                 }
+
+                actual = actual.Siguiente;
+                posicion++;
             }
 
             return false;
@@ -142,15 +150,19 @@ namespace EmisorDrones.CoreBusiness.Services
         /// <returns>true si sistema es válido</returns>
         public bool ValidarSistema()
         {
-            Drone[] todosDrones = drones.ObtenerTodos();
+            NodoGenerico<Drone> actual = drones.Cabeza;
 
-            foreach (Drone d in todosDrones)
+            while (actual != null)
             {
+                Drone d = actual.Dato;
+
                 if (d.AlturaMinima < 1 || d.AlturaMaxima > 100)
                     return false;
 
                 if (d.AlturaMinima > d.AlturaMaxima)
                     return false;
+
+                actual = actual.Siguiente;
             }
 
             return true;

@@ -72,15 +72,6 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene todos los elementos como array sin modificar la pila
-        /// </summary>
-        /// <returns>Array con copia de todos los elementos</returns>
-        public T[] ObtenerTodos()
-        {
-            return elementos.ObtenerTodos();
-        }
-
-        /// <summary>
         /// Retorna una representación en texto de la pila
         /// </summary>
         public override string ToString()
