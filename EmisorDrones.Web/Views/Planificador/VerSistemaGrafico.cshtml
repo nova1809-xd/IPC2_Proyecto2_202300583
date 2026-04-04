@@ -1,0 +1,39 @@
+@using System.Text.Json
+
+@{
+    ViewData["Title"] = "Grafico del Sistema";
+    string dot = ViewBag.Dot as string ?? string.Empty;
+    string titulo = ViewBag.Titulo as string ?? "Visualizacion";
+    string subtitulo = ViewBag.Subtitulo as string ?? string.Empty;
+}
+
+<h1>@titulo</h1>
+<p class="text-muted" style="margin-bottom: 1rem;">@subtitulo</p>
+
+<div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+    <a href="/Planificador/VerInstruccionesGraficas" class="btn btn-secondary">Ver Instrucciones Optimas</a>
+    <a href="/Planificador/DescargarSalidaXml" class="btn btn-primary">Descargar salida.xml</a>
+</div>
+
+<div class="alert alert-info">
+    Grafo generado en sintaxis DOT por GraphvizService y renderizado en cliente con d3-graphviz.
+</div>
+
+<div id="graphviz-canvas" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; overflow: auto;"></div>
+
+<h2 style="margin-top: 1.5rem;">Codigo DOT</h2>
+<pre style="white-space: pre-wrap; background: #f8f9fa; padding: 1rem; border-radius: 8px; border: 1px solid #eee;">@dot</pre>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/@@hpcc-js/wasm@2.20.0/dist/graphviz.umd.js"></script>
+<script src="https://unpkg.com/d3-graphviz@5.0.2/build/d3-graphviz.js"></script>
+<script>
+    (function () {
+        const dot = @Html.Raw(JsonSerializer.Serialize(dot));
+        d3.select("#graphviz-canvas")
+            .graphviz()
+            .zoom(true)
+            .fit(true)
+            .renderDot(dot);
+    })();
+</script>

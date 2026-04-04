@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ServicioDrones>();
 builder.Services.AddScoped<MotorOptimizacionService>();
+builder.Services.AddScoped<XmlWriterService>();
+builder.Services.AddScoped<GraphvizService>();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
