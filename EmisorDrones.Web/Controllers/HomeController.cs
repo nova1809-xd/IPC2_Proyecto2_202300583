@@ -157,6 +157,41 @@ namespace EmisorDrones.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult DescargarDocumentacion()
+        {
+            string nombreArchivo = "Ensayo_202300583_Proyecto2.pdf";
+            string directorioActual = Directory.GetCurrentDirectory();
+
+            string[] rutasPosibles = new[]
+            {
+                Path.GetFullPath(Path.Combine(directorioActual, nombreArchivo)),
+                Path.GetFullPath(Path.Combine(directorioActual, "EmisorDrones.CoreBusiness", nombreArchivo)),
+                Path.GetFullPath(Path.Combine(directorioActual, "..", "EmisorDrones.CoreBusiness", nombreArchivo)),
+                Path.GetFullPath(Path.Combine(directorioActual, "..", "..", "EmisorDrones.CoreBusiness", nombreArchivo)),
+                Path.GetFullPath(Path.Combine(directorioActual, "..", nombreArchivo)),
+                Path.GetFullPath(Path.Combine(directorioActual, "..", "..", nombreArchivo))
+            };
+
+            string? rutaEnsayo = null;
+            for (int i = 0; i < rutasPosibles.Length; i++)
+            {
+                if (System.IO.File.Exists(rutasPosibles[i]))
+                {
+                    rutaEnsayo = rutasPosibles[i];
+                    break;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(rutaEnsayo))
+            {
+                TempData["Error"] = "No se encontró el archivo de documentación.";
+                return RedirectToAction(nameof(Acerca));
+            }
+
+            return PhysicalFile(rutaEnsayo, "application/pdf", nombreArchivo);
+        }
+
         [HttpPost]
         public IActionResult InicializarSistema()
         {

@@ -10,11 +10,17 @@
     Este proyecto es una solución universitaria integrada para coordinar un sistema de drones que transmiten mensajes mediante emisión de luz.
     Se trata de un ejercicio académico enfocado en arquitectura de software, estructuras de datos dinámicas y construcción de interfaces web modernas.
 </p>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-error">@TempData["Error"]</div>
+}
+
 <div style="margin-top: 1.5rem; padding: 1rem; border: 1px solid #000000; border-radius: 0;">
     <h2>Datos del Estudiante</h2>
     <p><strong>Nombre:</strong> Angel Sebastian Mazariegos Pérez</p>
     <p><strong>Carné:</strong> 202300583</p>
-    <p><a href="#" class="btn btn-primary">Ver Documentación</a></p>
+    <p><a href="/Home/DescargarDocumentacion" class="btn btn-primary">Ver Documentación</a></p>
 </div>
 
 
