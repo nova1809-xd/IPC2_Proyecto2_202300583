@@ -1,50 +1,50 @@
 namespace EmisorDrones.CoreBusiness.Models
 {
     /// <summary>
-    /// Enumeración de tipos de instrucciones que puede ejecutar un dron.
-    /// Cada instrucción consume exactamente 1 segundo.
+    /// enumeración de tipos de instrucciones que puede ejecutar un dron
+    /// cada instrucción consume exactamente 1 segundo
     /// </summary>
     public enum TipoInstruccion
     {
         /// <summary>
-        /// Dron sube 1 metro
+        /// dron sube 1 metro
         /// </summary>
         Subir = 1,
 
         /// <summary>
-        /// Dron baja 1 metro
+        /// dron baja 1 metro
         /// </summary>
         Bajar = 2,
 
         /// <summary>
-        /// Dron espera sin hacer nada
+        /// dron espera sin hacer nada
         /// </summary>
         Esperar = 3,
 
         /// <summary>
-        /// Dron emite luz (solo uno por segundo en todo el sistema)
+        /// dron emite luz (solo uno por segundo en todo el sistema)
         /// </summary>
         EmitirLuz = 4
     }
 
     /// <summary>
-    /// Representa una instrucción ejecutable por un dron.
-    /// Cada instrucción toma exactamente 1 segundo.
+    /// representa una instrucción ejecutable por un dron
+    /// cada instrucción toma exactamente 1 segundo
     /// </summary>
     public class Instruccion
     {
         /// <summary>
-        /// Tipo de instrucción a ejecutar
+        /// tipo de instrucción a ejecutar
         /// </summary>
         public TipoInstruccion Tipo { get; set; }
 
         /// <summary>
-        /// Tiempo en que se ejecuta esta instrucción (en segundos, base 0)
+        /// tiempo en que se ejecuta esta instrucción (en segundos, empezando en 0)
         /// </summary>
         public int Tiempo { get; set; }
 
         /// <summary>
-        /// ID del dron que ejecuta esta instrucción
+        /// id del dron que ejecuta esta instrucción
         /// </summary>
         public int DronId { get; set; }
 
@@ -54,11 +54,11 @@ namespace EmisorDrones.CoreBusiness.Models
         public int AlturaObjetivo { get; set; }
 
         /// <summary>
-        /// Constructor con parámetros
+        /// constructor con parámetros
         /// </summary>
-        /// <param name="tipo">Tipo de instrucción</param>
-        /// <param name="tiempo">Tiempo de ejecución en segundos</param>
-        /// <param name="dronId">ID del dron ejecutor</param>
+        /// <param name="tipo">tipo de instrucción</param>
+        /// <param name="tiempo">tiempo de ejecución en segundos</param>
+        /// <param name="dronId">id del dron ejecutor</param>
         public Instruccion(TipoInstruccion tipo, int tiempo, int dronId)
         {
             this.Tipo = tipo;
@@ -76,7 +76,7 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Retorna una representación legible de la instrucción
+        /// retorna una representación legible de la instrucción
         /// </summary>
         public override string ToString()
         {
@@ -84,7 +84,7 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Obtiene una descripción detallada de la instrucción
+        /// obtiene una descripción detallada de la instrucción
         /// </summary>
         public string ObtenerDescripcion()
         {

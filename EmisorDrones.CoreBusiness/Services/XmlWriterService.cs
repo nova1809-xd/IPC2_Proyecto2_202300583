@@ -4,17 +4,35 @@ using EmisorDrones.CoreBusiness.TDAs;
 
 namespace EmisorDrones.CoreBusiness.Services
 {
-    public class XmlWriterService
+    public class SalidaMensajeXml
     {
-        public void GenerarSalidaXml(
-            ListaEnlazada<InstanteTiempo> timeline,
-            string rutaSalidaXml,
+        public string NombreMensaje { get; private set; }
+
+        public string NombreSistema { get; private set; }
+
+        public string MensajeRecibido { get; private set; }
+
+        public ListaEnlazada<InstanteTiempo> Timeline { get; private set; }
+
+        public SalidaMensajeXml(
             string nombreMensaje,
             string nombreSistema,
-            string mensajeRecibido)
+            string mensajeRecibido,
+            ListaEnlazada<InstanteTiempo> timeline)
         {
-            if (timeline == null)
-                throw new ArgumentNullException(nameof(timeline));
+            NombreMensaje = nombreMensaje ?? string.Empty;
+            NombreSistema = nombreSistema ?? string.Empty;
+            MensajeRecibido = mensajeRecibido ?? string.Empty;
+            Timeline = timeline ?? new ListaEnlazada<InstanteTiempo>();
+        }
+    }
+
+    public class XmlWriterService
+    {
+        public void GenerarSalidaXml(ListaEnlazada<SalidaMensajeXml> mensajesSalida, string rutaSalidaXml)
+        {
+            if (mensajesSalida == null)
+                throw new ArgumentNullException(nameof(mensajesSalida));
 
             if (string.IsNullOrWhiteSpace(rutaSalidaXml))
                 throw new ArgumentException("la ruta de salida xml es obligatoria");
@@ -33,58 +51,88 @@ namespace EmisorDrones.CoreBusiness.Services
                 writer.WriteStartElement("respuesta");
                 writer.WriteStartElement("listaMensajes");
 
-                writer.WriteStartElement("mensaje");
-                writer.WriteAttributeString("nombre", nombreMensaje ?? string.Empty);
-
-                writer.WriteStartElement("sistemaDrones");
-                writer.WriteString(nombreSistema ?? string.Empty);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("tiempoOptimo");
-                writer.WriteString(ObtenerTiempoOptimo(timeline).ToString());
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("mensajeRecibido");
-                writer.WriteString(mensajeRecibido ?? string.Empty);
-                writer.WriteEndElement();
-
-                writer.WriteStartElement("instrucciones");
-
-                NodoGenerico<InstanteTiempo> nodoInstante = timeline.Cabeza;
-                while (nodoInstante != null)
+                NodoGenerico<SalidaMensajeXml> nodoMensaje = mensajesSalida.Cabeza;
+                while (nodoMensaje != null)
                 {
-                    InstanteTiempo instante = nodoInstante.Dato;
-
-                    writer.WriteStartElement("tiempo");
-                    writer.WriteAttributeString("valor", instante.Segundo.ToString());
-
-                    writer.WriteStartElement("acciones");
-
-                    NodoGenerico<AccionDron> nodoAccion = instante.Acciones.Cabeza;
-                    while (nodoAccion != null)
-                    {
-                        AccionDron accion = nodoAccion.Dato;
-
-                        writer.WriteStartElement("dron");
-                        writer.WriteAttributeString("nombre", accion.NombreDron ?? string.Empty);
-                        writer.WriteString(accion.Movimiento ?? "Esperar");
-                        writer.WriteEndElement();
-
-                        nodoAccion = nodoAccion.Siguiente;
-                    }
-
-                    writer.WriteEndElement();
-                    writer.WriteEndElement();
-
-                    nodoInstante = nodoInstante.Siguiente;
+                    EscribirMensaje(writer, nodoMensaje.Dato);
+                    nodoMensaje = nodoMensaje.Siguiente;
                 }
 
                 writer.WriteEndElement();
                 writer.WriteEndElement();
-                writer.WriteEndElement();
-
                 writer.WriteEndDocument();
             }
+        }
+
+        public void GenerarSalidaXml(
+            ListaEnlazada<InstanteTiempo> timeline,
+            string rutaSalidaXml,
+            string nombreMensaje,
+            string nombreSistema,
+            string mensajeRecibido)
+        {
+            if (timeline == null)
+                throw new ArgumentNullException(nameof(timeline));
+
+            if (string.IsNullOrWhiteSpace(rutaSalidaXml))
+                throw new ArgumentException("la ruta de salida xml es obligatoria");
+
+            ListaEnlazada<SalidaMensajeXml> mensajes = new ListaEnlazada<SalidaMensajeXml>();
+            mensajes.AgregarAlFinal(new SalidaMensajeXml(nombreMensaje, nombreSistema, mensajeRecibido, timeline));
+
+            GenerarSalidaXml(mensajes, rutaSalidaXml);
+        }
+
+        private void EscribirMensaje(XmlWriter writer, SalidaMensajeXml mensaje)
+        {
+            writer.WriteStartElement("mensaje");
+            writer.WriteAttributeString("nombre", mensaje.NombreMensaje);
+
+            writer.WriteStartElement("sistemaDrones");
+            writer.WriteString(mensaje.NombreSistema);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("tiempoOptimo");
+            writer.WriteString(ObtenerTiempoOptimo(mensaje.Timeline).ToString());
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("mensajeRecibido");
+            writer.WriteString(mensaje.MensajeRecibido);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("instrucciones");
+
+            NodoGenerico<InstanteTiempo> nodoInstante = mensaje.Timeline.Cabeza;
+            while (nodoInstante != null)
+            {
+                InstanteTiempo instante = nodoInstante.Dato;
+
+                writer.WriteStartElement("tiempo");
+                writer.WriteAttributeString("valor", instante.Segundo.ToString());
+
+                writer.WriteStartElement("acciones");
+
+                NodoGenerico<AccionDron> nodoAccion = instante.Acciones.Cabeza;
+                while (nodoAccion != null)
+                {
+                    AccionDron accion = nodoAccion.Dato;
+
+                    writer.WriteStartElement("dron");
+                    writer.WriteAttributeString("nombre", accion.NombreDron ?? string.Empty);
+                    writer.WriteString(accion.Movimiento ?? "Esperar");
+                    writer.WriteEndElement();
+
+                    nodoAccion = nodoAccion.Siguiente;
+                }
+
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+
+                nodoInstante = nodoInstante.Siguiente;
+            }
+
+            writer.WriteEndElement();
+            writer.WriteEndElement();
         }
 
         private int ObtenerTiempoOptimo(ListaEnlazada<InstanteTiempo> timeline)

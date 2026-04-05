@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <listaDrones>
+    <dron>OmegaDron</dron>
+    <dron>SigmaDron</dron>
+    <dron>LambdaDron</dron>
+    <dron>KappaDron</dron>
+  </listaDrones>
+
+  <listaSistemasDrones>
+    <sistemaDrones nombre="SistemaOriente">
+      <alturaMaxima>7</alturaMaxima>
+      <cantidadDrones>2</cantidadDrones>
+      <contenido>
+        <dron>OmegaDron</dron>
+        <alturas>
+          <altura valor="1">X</altura>
+          <altura valor="3">Y</altura>
+          <altura valor="6">Z</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>SigmaDron</dron>
+        <alturas>
+          <altura valor="2">R</altura>
+          <altura valor="4">S</altura>
+          <altura valor="7">T</altura>
+        </alturas>
+      </contenido>
+    </sistemaDrones>
+
+    <sistemaDrones nombre="SistemaOccidente">
+      <alturaMaxima>5</alturaMaxima>
+      <cantidadDrones>2</cantidadDrones>
+      <contenido>
+        <dron>LambdaDron</dron>
+        <alturas>
+          <altura valor="1">U</altura>
+          <altura valor="2">V</altura>
+          <altura valor="5">W</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>KappaDron</dron>
+        <alturas>
+          <altura valor="1">M</altura>
+          <altura valor="3">N</altura>
+          <altura valor="4">O</altura>
+        </alturas>
+      </contenido>
+    </sistemaDrones>
+  </listaSistemasDrones>
+
+  <listaMensajes>
+    <Mensaje nombre="MensajeOriente_01">
+      <sistemaDrones>SistemaOriente</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="OmegaDron">1</instruccion>
+        <instruccion dron="SigmaDron">4</instruccion>
+        <instruccion dron="OmegaDron">6</instruccion>
+      </instrucciones>
+    </Mensaje>
+
+    <Mensaje nombre="MensajeOccidente_01">
+      <sistemaDrones>SistemaOccidente</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="KappaDron">3</instruccion>
+        <instruccion dron="LambdaDron">5</instruccion>
+      </instrucciones>
+    </Mensaje>
+
+    <Mensaje nombre="MensajeCruce_01">
+      <sistemaDrones>SistemaOriente</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="SigmaDron">2</instruccion>
+        <instruccion dron="OmegaDron">3</instruccion>
+      </instrucciones>
+    </Mensaje>
+  </listaMensajes>
+</config>

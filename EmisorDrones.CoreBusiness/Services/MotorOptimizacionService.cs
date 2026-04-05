@@ -35,23 +35,23 @@ namespace EmisorDrones.CoreBusiness.Services
                     {
                         segundoActual++;
                         InstanteTiempo instanteSubida = CrearInstanteConPadding(segundoActual, dronesDelSistema);
+                        dron.SubirUnMetro();
                         ReemplazarMovimiento(instanteSubida, dron.NombreDron, "Subir");
                         timeline.AgregarAlFinal(instanteSubida);
-                        dron.SubirUnMetro();
                     }
 
                     while (dron.AlturaActual > alturaObjetivo)
                     {
                         segundoActual++;
                         InstanteTiempo instanteBajada = CrearInstanteConPadding(segundoActual, dronesDelSistema);
+                        dron.BajarUnMetro();
                         ReemplazarMovimiento(instanteBajada, dron.NombreDron, "Bajar");
                         timeline.AgregarAlFinal(instanteBajada);
-                        dron.BajarUnMetro();
                     }
 
                     segundoActual++;
                     InstanteTiempo instanteLuz = CrearInstanteConPadding(segundoActual, dronesDelSistema);
-                    ReemplazarMovimiento(instanteLuz, dron.NombreDron, "Emitir luz");
+                    ReemplazarMovimiento(instanteLuz, dron.NombreDron, dron.AlturaActual.ToString());
                     timeline.AgregarAlFinal(instanteLuz);
                 }
 

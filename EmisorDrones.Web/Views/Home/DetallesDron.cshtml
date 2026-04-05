@@ -23,22 +23,22 @@
     </div>
 
     <div class="card">
-        <div class="card-title">Veces Emiti Luz</div>
+        <div class="card-title">Veces Emitió Luz</div>
         <div class="card-value">@Model.VecesEmitioLuz</div>
     </div>
 </div>
 
 <hr style="margin: 2rem 0;">
 
-<h2>Informacin Operativa</h2>
+<h2>Información Operativa</h2>
 
 <table>
     <tr>
-        <td style="font-weight: bold; width: 30%;">Altura Mnima:</td>
+        <td style="font-weight: bold; width: 30%;">Altura Mínima:</td>
         <td>@Model.AlturaMinima metros</td>
     </tr>
     <tr>
-        <td style="font-weight: bold;">Altura Mxima:</td>
+        <td style="font-weight: bold;">Altura Máxima:</td>
         <td>@Model.AlturaMaxima metros</td>
     </tr>
     <tr>
@@ -62,8 +62,8 @@
             <tr>
                 <th>#</th>
                 <th>Tiempo (s)</th>
-                <th>Instruccin</th>
-                <th>Descripcin</th>
+                <th>Instrucción</th>
+                <th>Descripción</th>
             </tr>
         </thead>
         <tbody>
@@ -90,17 +90,17 @@
 else
 {
     <div class="alert alert-info">
-        Este dron an no ha ejecutado instrucciones.
+        Este dron aún no ha ejecutado instrucciones.
     </div>
 }
 
 <hr style="margin: 2rem 0;">
 
 <div style="display: flex; gap: 1rem;">
-    <a href="/Home/GestionarDrones" class="btn btn-secondary">Volver a Gestin</a>
+    <a href="/Home/GestionarDrones" class="btn btn-secondary">Volver a Gestión</a>
     <form method="POST" action="/Home/EliminarDron" style="display: inline; margin: 0;">
         <input type="hidden" name="id" value="@Model.Id">
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Est seguro de eliminar el dron #@Model.Id?');">Eliminar Dron</button>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el dron #@Model.Id?');">Eliminar Dron</button>
     </form>
 </div>
 

@@ -2,12 +2,14 @@ using EmisorDrones.CoreBusiness.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// agregar servicios
+// agregar servicios al contenedor DI
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ServicioDrones>();
+builder.Services.AddSingleton<ServicioDrones>();
 builder.Services.AddScoped<MotorOptimizacionService>();
+builder.Services.AddScoped<XmlReaderService>();
 builder.Services.AddScoped<XmlWriterService>();
 builder.Services.AddScoped<GraphvizService>();
+builder.Services.AddSingleton<EstadoSistemaService>();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);

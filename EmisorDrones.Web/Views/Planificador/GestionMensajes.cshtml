@@ -1,0 +1,89 @@
+@model EmisorDrones.CoreBusiness.TDAs.ListaEnlazada<EmisorDrones.CoreBusiness.Models.MensajeConfig>
+@using System.Text.Json
+
+@{
+    ViewData["Title"] = "Gestión de Mensajes";
+    string nombreSeleccionado = ViewBag.NombreMensajeSeleccionado as string ?? string.Empty;
+    string nombreSistema = ViewBag.NombreSistema as string ?? string.Empty;
+    string textoMensaje = ViewBag.TextoMensaje as string ?? string.Empty;
+    string dot = ViewBag.Dot as string ?? string.Empty;
+    int tiempoOptimo = ViewBag.TiempoOptimo != null ? (int)ViewBag.TiempoOptimo : 0;
+}
+
+<h1>Gestión de Mensajes</h1>
+
+<div class="grid" style="grid-template-columns: 320px 1fr; align-items: start;">
+    <div>
+        <h2>Mensajes Cargados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var nodoMensaje = Model.Cabeza;
+                    while (nodoMensaje != null)
+                    {
+                        var mensaje = nodoMensaje.Dato;
+                        bool seleccionado = string.Equals(mensaje.NombreMensaje, nombreSeleccionado, StringComparison.OrdinalIgnoreCase);
+                        <tr style="@(seleccionado ? "background:#000;color:#fff;" : string.Empty)">
+                            <td>
+                                <a style="@(seleccionado ? "color:#fff;" : string.Empty)" href="/Planificador/GestionMensajes?nombreMensaje=@mensaje.NombreMensaje">@mensaje.NombreMensaje</a>
+                            </td>
+                        </tr>
+                        nodoMensaje = nodoMensaje.Siguiente;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h2>Detalle del Mensaje Seleccionado</h2>
+        <table>
+            <tr>
+                <td style="font-weight:bold; width: 35%;">Mensaje</td>
+                <td>@nombreSeleccionado</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">Sistema</td>
+                <td>@nombreSistema</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">Texto del Mensaje</td>
+                <td>@textoMensaje</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">Tiempo Optimo</td>
+                <td>@tiempoOptimo segundos</td>
+            </tr>
+        </table>
+
+        <div style="display:flex; gap:1rem; margin:1rem 0;">
+            <a class="btn btn-primary" href="/Planificador/DescargarSalidaXml?nombreMensaje=@nombreSeleccionado">Descargar salida.xml</a>
+            <a class="btn btn-secondary" href="/Planificador/VerSistemaGrafico?nombreSistema=@nombreSistema">Ver Sistema Gráfico</a>
+        </div>
+
+        <h2>Timeline Graphviz</h2>
+        <div id="graphviz-canvas" style="background:#fff; border:1px solid #000; padding:1rem; overflow:auto;"></div>
+
+        <h2 style="margin-top:1rem;">Código DOT</h2>
+        <pre style="white-space: pre-wrap; border:1px solid #000; padding:1rem;">@dot</pre>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/@@hpcc-js/wasm@2.20.0/dist/graphviz.umd.js"></script>
+<script src="https://unpkg.com/d3-graphviz@5.0.2/build/d3-graphviz.js"></script>
+<script>
+    (function () {
+        const dot = @Html.Raw(JsonSerializer.Serialize(dot));
+        d3.select("#graphviz-canvas")
+            .graphviz()
+            .zoom(true)
+            .fit(true)
+            .renderDot(dot);
+    })();
+</script>

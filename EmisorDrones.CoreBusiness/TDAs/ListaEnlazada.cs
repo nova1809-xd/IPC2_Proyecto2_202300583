@@ -1,29 +1,28 @@
 namespace EmisorDrones.CoreBusiness.TDAs
 {
     /// <summary>
-    /// Lista enlazada bidireccional implementada con memoria dinámica.
-    /// Restricción: No usa List\<T\> de C#, solo nodos manuales.
+    /// lista enlazada que puedes recorrer hacia adelante y atrás, hecha totalmente a mano sin usar List de C#
     /// </summary>
-    /// <typeparam name="T">Tipo de dato almacenado en la lista</typeparam>
+    /// <typeparam name="T">tipo de dato almacenado en la lista</typeparam>
     public class ListaEnlazada<T>
     {
         /// <summary>
-        /// Referencia al primer nodo de la lista
+        /// referencia al primer nodo de la lista
         /// </summary>
         private NodoGenerico<T> cabeza;
 
         /// <summary>
-        /// Referencia al último nodo de la lista
+        /// referencia al último nodo de la lista
         /// </summary>
         private NodoGenerico<T> cola;
 
         /// <summary>
-        /// Cantidad de elementos en la lista
+        /// cantidad de elementos en la lista
         /// </summary>
         private int cantidad;
 
         /// <summary>
-        /// Constructor que inicializa lista vacía
+        /// constructor que inicializa lista vacía
         /// </summary>
         public ListaEnlazada()
         {
@@ -33,24 +32,24 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene la cantidad de elementos en la lista
+        /// obtiene la cantidad de elementos en la lista
         /// </summary>
         public int Cantidad => cantidad;
 
         /// <summary>
-        /// permite recorrer la lista desde el primer nodo
+        /// permite empezar a recorrer la lista desde el primer nodo
         /// </summary>
         public NodoGenerico<T> Cabeza => cabeza;
 
         /// <summary>
-        /// Verifica si la lista está vacía
+        /// verifica si la lista está vacía
         /// </summary>
         public bool EstaVacia => cantidad == 0;
 
         /// <summary>
-        /// Agrega un elemento al final de la lista
+        /// agrega un elemento al final de la lista
         /// </summary>
-        /// <param name="dato">Elemento a agregar</param>
+        /// <param name="dato">elemento a agregar</param>
         public void AgregarAlFinal(T dato)
         {
             NodoGenerico<T> nuevoNodo = new NodoGenerico<T>(dato);
@@ -71,9 +70,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Agrega un elemento al inicio de la lista
+        /// agrega un elemento al inicio de la lista
         /// </summary>
-        /// <param name="dato">Elemento a agregar</param>
+        /// <param name="dato">elemento a agregar</param>
         public void AgregarAlInicio(T dato)
         {
             NodoGenerico<T> nuevoNodo = new NodoGenerico<T>(dato);
@@ -94,10 +93,10 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Agrega un elemento en una posición específica (0-indexado)
+        /// agrega un elemento en una posición específica (0-indexado)
         /// </summary>
-        /// <param name="dato">Elemento a agregar</param>
-        /// <param name="posicion">Posición donde insertar (0 = inicio)</param>
+        /// <param name="dato">elemento a agregar</param>
+        /// <param name="posicion">posición donde insertar (0 = inicio)</param>
         public void AgregarEnPosicion(T dato, int posicion)
         {
             if (posicion < 0 || posicion > cantidad)
@@ -122,10 +121,10 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene el elemento en una posición específica
+        /// obtiene el elemento en una posición específica
         /// </summary>
-        /// <param name="posicion">Posición del elemento (0-indexado)</param>
-        /// <returns>Elemento en la posición</returns>
+        /// <param name="posicion">posición del elemento (0-indexado)</param>
+        /// <returns>elemento en la posición</returns>
         public T ObtenerEnPosicion(int posicion)
         {
             if (posicion < 0 || posicion >= cantidad)
@@ -135,7 +134,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene el nodo en una posición específica (interno)
+        /// obtiene el nodo en una posición específica (interno)
         /// </summary>
         private NodoGenerico<T> ObtenerNodo(int posicion)
         {
@@ -158,7 +157,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Elimina y retorna el primer elemento de la lista
+        /// elimina y retorna el primer elemento de la lista
         /// </summary>
         public T EliminarDelInicio()
         {
@@ -183,7 +182,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Elimina y retorna el último elemento de la lista
+        /// elimina y retorna el último elemento de la lista
         /// </summary>
         public T EliminarDelFinal()
         {
@@ -208,9 +207,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Elimina el elemento en una posición específica
+        /// elimina el elemento en una posición específica
         /// </summary>
-        /// <param name="posicion">Posición a eliminar (0-indexado)</param>
+        /// <param name="posicion">posición a eliminar (0-indexado)</param>
         public T EliminarEnPosicion(int posicion)
         {
             if (posicion < 0 || posicion >= cantidad)
@@ -234,10 +233,10 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Busca el índice de un elemento en la lista
+        /// busca el índice de un elemento en la lista
         /// </summary>
-        /// <param name="dato">Elemento a buscar</param>
-        /// <returns>Índice del elemento o -1 si no existe</returns>
+        /// <param name="dato">elemento a buscar</param>
+        /// <returns>índice del elemento o -1 si no existe</returns>
         public int BuscarIndice(T dato)
         {
             NodoGenerico<T> actual = cabeza;
@@ -256,9 +255,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Verifica si un elemento existe en la lista
+        /// verifica si un elemento existe en la lista
         /// </summary>
-        /// <param name="dato">Elemento a verificar</param>
+        /// <param name="dato">elemento a verificar</param>
         /// <returns>true si existe, false en caso contrario</returns>
         public bool Contiene(T dato)
         {
@@ -266,7 +265,45 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Vacía completamente la lista
+        /// ordena la lista alfabéticamente usando ordenamiento de burbuja hecho a mano
+        /// no usa estructuras nativas ni LINQ
+        /// </summary>
+        /// <param name="selectorNombre">función para obtener el texto a comparar</param>
+        public void OrdenarAlfabeticamente(Func<T, string> selectorNombre)
+        {
+            if (selectorNombre == null)
+                throw new ArgumentNullException(nameof(selectorNombre));
+
+            if (cantidad <= 1)
+                return;
+
+            bool huboIntercambio = true;
+
+            while (huboIntercambio)
+            {
+                huboIntercambio = false;
+                NodoGenerico<T> actual = cabeza;
+
+                while (actual != null && actual.Siguiente != null)
+                {
+                    string nombreActual = selectorNombre(actual.Dato) ?? string.Empty;
+                    string nombreSiguiente = selectorNombre(actual.Siguiente.Dato) ?? string.Empty;
+
+                    if (string.Compare(nombreActual, nombreSiguiente, StringComparison.OrdinalIgnoreCase) > 0)
+                    {
+                        T temporal = actual.Dato;
+                        actual.Dato = actual.Siguiente.Dato;
+                        actual.Siguiente.Dato = temporal;
+                        huboIntercambio = true;
+                    }
+
+                    actual = actual.Siguiente;
+                }
+            }
+        }
+
+        /// <summary>
+        /// vacía completamente la lista
         /// </summary>
         public void Limpiar()
         {
@@ -276,7 +313,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna una representación en texto de la lista
+        /// retorna una representación en texto de la lista
         /// </summary>
         public override string ToString()
         {

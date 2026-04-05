@@ -12,16 +12,16 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            background: #ffffff;
             min-height: 100vh;
-            color: #333;
+            color: #000000;
         }
 
         nav {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #ffffff;
+            border-bottom: 1px solid #000000;
             padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -33,20 +33,46 @@
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            align-items: center;
         }
 
         nav a {
-            color: white;
+            color: #000000;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
+            border: 1px solid #000000;
+            border-radius: 0;
+            display: inline-block;
         }
 
         nav a:hover {
-            background-color: #667eea;
-            color: white;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .nav-inline-form {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .nav-link-button {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0;
+            border: 1px solid #000000;
+            background: #ffffff;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+        }
+
+        .nav-link-button:hover {
+            background-color: #000000;
+            color: #ffffff;
         }
 
         .container {
@@ -56,33 +82,33 @@
         }
 
         .main-layout {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 0;
             padding: 2rem;
             min-height: 60vh;
         }
 
         h1 {
-            color: #667eea;
+            color: #000000;
             margin-bottom: 1.5rem;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 1px solid #000000;
             padding-bottom: 0.5rem;
         }
 
         h2 {
-            color: #764ba2;
+            color: #000000;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
 
         .card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            color: #000000;
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 0;
+            border: 1px solid #000000;
             margin-bottom: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-title {
@@ -98,44 +124,44 @@
 
         .btn {
             padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 4px;
+            border: 1px solid #000000;
+            border-radius: 0;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
         }
 
         .btn-primary {
-            background-color: #667eea;
-            color: white;
+            background-color: #ffffff;
+            color: #000000;
         }
 
         .btn-primary:hover {
-            background-color: #555cc4;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background-color: #000000;
+            color: #ffffff;
         }
 
         .btn-secondary {
-            background-color: #764ba2;
-            color: white;
+            background-color: #ffffff;
+            color: #000000;
         }
 
         .btn-secondary:hover {
-            background-color: #63397e;
-            transform: translateY(-2px);
+            background-color: #000000;
+            color: #ffffff;
         }
 
         .btn-danger {
-            background-color: #e74c3c;
-            color: white;
+            background-color: #ffffff;
+            color: #000000;
         }
 
         .btn-danger:hover {
-            background-color: #c0392b;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         .btn-small {
@@ -144,9 +170,10 @@
         }
 
         form {
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 0;
+            border: 1px solid #000000;
             margin: 1rem 0;
         }
 
@@ -158,7 +185,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #333;
+            color: #000000;
         }
 
         input[type="text"],
@@ -169,19 +196,17 @@
         select {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 1px solid #000000;
+            border-radius: 0;
             font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s;
         }
 
         input:focus,
         textarea:focus,
         select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #000000;
         }
 
         table {
@@ -192,20 +217,21 @@
         }
 
         th {
-            background-color: #667eea;
-            color: white;
+            background-color: #ffffff;
+            color: #000000;
             padding: 1rem;
             text-align: left;
             font-weight: bold;
+            border: 1px solid #000000;
         }
 
         td {
             padding: 1rem;
-            border-bottom: 1px solid #eee;
+            border: 1px solid #000000;
         }
 
         tr:hover {
-            background-color: #f8f9fa;
+            background-color: #f2f2f2;
         }
 
         .alert {
@@ -215,29 +241,30 @@
         }
 
         .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #000000;
         }
 
         .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #000000;
         }
 
         .alert-info {
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #000000;
         }
 
         footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background-color: #ffffff;
+            color: #000000;
             text-align: center;
             padding: 2rem;
             margin-top: 3rem;
+            border-top: 1px solid #000000;
         }
 
         .grid {
@@ -252,7 +279,7 @@
         }
 
         .text-muted {
-            color: #6c757d;
+            color: #000000;
         }
 
         .mb-2 {
@@ -272,9 +299,16 @@
     <nav>
         <ul>
             <li><a href="/">Inicio</a></li>
+            <li><a href="/Planificador/CargarXmlEntrada">Cargar XML</a></li>
             <li><a href="/Home/GestionarDrones">Gestionar Drones</a></li>
-            <li><a href="/Planificador/VerSistemaGrafico">Grafico Sistema</a></li>
-            <li><a href="/Planificador/VerInstruccionesGraficas">Grafico Timeline</a></li>
+            <li><a href="/Planificador/GestionMensajes">Gestionar Mensajes</a></li>
+            <li><a href="/Planificador/VerSistemaGrafico">Gráfico Sistema</a></li>
+            <li><a href="/Planificador/VerInstruccionesGraficas">Gráfico Timeline</a></li>
+            <li>
+                <form class="nav-inline-form" method="post" action="/Home/InicializarSistema">
+                    <button type="submit" class="nav-link-button">Inicializar Sistema</button>
+                </form>
+            </li>
             <li><a href="/Home/Acerca">Acerca de</a></li>
         </ul>
     </nav>
@@ -286,7 +320,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Emisor de Drones - Sistema de Control | IPC2 Proyecto 2</p>
+        <p>Emisor de Drones - Proyecto 2 IPC2</p>
     </footer>
 </body>
 </html>

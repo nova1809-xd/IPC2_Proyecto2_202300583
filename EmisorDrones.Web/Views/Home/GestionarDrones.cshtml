@@ -1,10 +1,10 @@
 ﻿@model EmisorDrones.CoreBusiness.TDAs.ListaEnlazada<Drone>
 
 @{
-    ViewData["Title"] = "Gestion de Drones";
+    ViewData["Title"] = "Gestión de Drones";
 }
 
-<h1>Gestion de Drones</h1>
+<h1>Gestión de Drones</h1>
 
 @if (TempData["Mensaje"] != null)
 {
@@ -31,6 +31,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Nombre</th>
                 <th>Estado</th>
                 <th>Altura Actual</th>
                 <th>Rango (Min-Max)</th>
@@ -48,10 +49,9 @@
                         <td>
                             <strong>Dron #@dron.Id</strong>
                         </td>
+                        <td>@dron.NombreDron</td>
                         <td>
-                            <span style="background-color: @(dron.Activo ? "#d4edda" : "#f8d7da"); padding: 0.25rem 0.5rem; border-radius: 4px; color: @(dron.Activo ? "#155724" : "#721c24");">
-                                @(dron.Activo ? "Activo" : "Inactivo")
-                            </span>
+                            @(dron.Activo ? "Activo" : "Inactivo")
                         </td>
                         <td>@dron.AlturaActual m</td>
                         <td>@dron.AlturaMinima - @dron.AlturaMaxima m</td>
@@ -60,7 +60,7 @@
                             <a href="/Home/DetallesDron/@dron.Id" class="btn btn-secondary btn-small">Ver Detalles</a>
                             <form method="POST" action="/Home/EliminarDron" style="display: inline; margin: 0;">
                                 <input type="hidden" name="id" value="@dron.Id">
-                                <button type="submit" class="btn btn-danger btn-small" onclick="return confirm('Esta seguro de eliminar el dron #@dron.Id?');">Eliminar</button>
+                                <button type="submit" class="btn btn-danger btn-small" onclick="return confirm('¿Está seguro de eliminar el dron #@dron.Id?');">Eliminar</button>
                             </form>
                         </td>
                     </tr>

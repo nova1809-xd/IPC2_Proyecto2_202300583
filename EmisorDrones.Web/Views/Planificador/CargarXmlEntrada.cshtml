@@ -1,0 +1,45 @@
+@using EmisorDrones.CoreBusiness.TDAs
+
+@{
+    ViewData["Title"] = "Cargar XML de Entrada";
+}
+
+<h1>Cargar XML de Entrada</h1>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-error">@TempData["Error"]</div>
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="archivoXml">Archivo entrada.xml</label>
+        <input type="file" id="archivoXml" name="archivoXml" accept=".xml" required />
+    </div>
+
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Cargar XML</button>
+        <a href="/Planificador/GestionMensajes" class="btn btn-secondary">Gestionar Mensajes</a>
+    </div>
+</form>
+
+@if (ViewBag.Errores != null)
+{
+    <h2 style="margin-top: 1.5rem;">Errores de Validación</h2>
+    <ul>
+        @{
+            ListaEnlazada<string> errores = ViewBag.Errores;
+            var nodoError = errores.Cabeza;
+            while (nodoError != null)
+            {
+                <li>@nodoError.Dato</li>
+                nodoError = nodoError.Siguiente;
+            }
+        }
+    </ul>
+}

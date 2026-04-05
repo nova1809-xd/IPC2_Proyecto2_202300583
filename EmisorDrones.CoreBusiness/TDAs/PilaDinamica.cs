@@ -1,19 +1,18 @@
 namespace EmisorDrones.CoreBusiness.TDAs
 {
     /// <summary>
-    /// Pila LIFO (Last In First Out) implementada con lista enlazada.
-    /// Restricción: No usa Stack\<T\> de C#.
+    /// pila que funciona con última-entra-primera-sale, implementada manualmente sin usar Stack de C#
     /// </summary>
-    /// <typeparam name="T">Tipo de dato almacenado en la pila</typeparam>
+    /// <typeparam name="T">tipo de dato que guarda la pila</typeparam>
     public class PilaDinamica<T>
     {
         /// <summary>
-        /// Lista interna que almacena los elementos
+        /// lista interna que almacena los elementos
         /// </summary>
         private ListaEnlazada<T> elementos;
 
         /// <summary>
-        /// Constructor que inicializa pila vacía
+        /// constructor que inicializa pila vacía
         /// </summary>
         public PilaDinamica()
         {
@@ -21,28 +20,28 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene la cantidad de elementos en la pila
+        /// obtiene la cantidad de elementos en la pila
         /// </summary>
         public int Cantidad => elementos.Cantidad;
 
         /// <summary>
-        /// Verifica si la pila está vacía
+        /// verifica si la pila está vacía
         /// </summary>
         public bool EstaVacia => elementos.EstaVacia;
 
         /// <summary>
-        /// Introduce un elemento en la cima de la pila
+        /// introduce un elemento en la cima de la pila
         /// </summary>
-        /// <param name="dato">Elemento a empujar</param>
+        /// <param name="dato">elemento a empujar</param>
         public void Empujar(T dato)
         {
             elementos.AgregarAlInicio(dato);
         }
 
         /// <summary>
-        /// Extrae y retorna el elemento en la cima de la pila
+        /// extrae y retorna el elemento en la cima de la pila
         /// </summary>
-        /// <returns>Elemento en la cima</returns>
+        /// <returns>elemento en la cima</returns>
         public T Extraer()
         {
             if (EstaVacia)
@@ -52,9 +51,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna el elemento en la cima sin eliminarlo
+        /// retorna el elemento en la cima sin eliminarlo
         /// </summary>
-        /// <returns>Elemento en la cima</returns>
+        /// <returns>elemento en la cima</returns>
         public T Cima()
         {
             if (EstaVacia)
@@ -64,7 +63,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Vacía completamente la pila
+        /// vacía completamente la pila
         /// </summary>
         public void Limpiar()
         {
@@ -72,7 +71,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna una representación en texto de la pila
+        /// retorna una representación en texto de la pila
         /// </summary>
         public override string ToString()
         {

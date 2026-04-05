@@ -1,18 +1,51 @@
 @using System.Text.Json
+@using EmisorDrones.CoreBusiness.Models
+@using EmisorDrones.CoreBusiness.TDAs
 
 @{
     ViewData["Title"] = "Grafico de Instrucciones";
     string dot = ViewBag.Dot as string ?? string.Empty;
-    string titulo = ViewBag.Titulo as string ?? "Visualizacion";
+    string titulo = ViewBag.Titulo as string ?? "Visualización";
     string subtitulo = ViewBag.Subtitulo as string ?? string.Empty;
+    string nombreMensaje = ViewBag.NombreMensajeSeleccionado as string ?? string.Empty;
+    string nombreSistemaSeleccionado = ViewBag.NombreSistemaSeleccionado as string ?? string.Empty;
+    ListaEnlazada<SistemaDronesConfig> sistemas = ViewBag.Sistemas as ListaEnlazada<SistemaDronesConfig> ?? new ListaEnlazada<SistemaDronesConfig>();
 }
 
 <h1>@titulo</h1>
 <p class="text-muted" style="margin-bottom: 1rem;">@subtitulo</p>
 
+<h2>Sistemas Cargados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre del Sistema</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            NodoGenerico<SistemaDronesConfig> nodoSistema = sistemas.Cabeza;
+            while (nodoSistema != null)
+            {
+                SistemaDronesConfig sistema = nodoSistema.Dato;
+                bool seleccionado = string.Equals(sistema.NombreSistema, nombreSistemaSeleccionado, StringComparison.OrdinalIgnoreCase);
+                <tr style="@(seleccionado ? "background:#000;color:#fff;" : string.Empty)">
+                    <td>@sistema.NombreSistema</td>
+                    <td>
+                        <a href="/Planificador/VerInstruccionesGraficas?nombreSistema=@sistema.NombreSistema" class="btn btn-secondary btn-small">Ver Instrucciones</a>
+                    </td>
+                </tr>
+
+                nodoSistema = nodoSistema.Siguiente;
+            }
+        }
+    </tbody>
+</table>
+
 <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-    <a href="/Planificador/VerSistemaGrafico" class="btn btn-secondary">Ver Sistema de Drones</a>
-    <a href="/Planificador/DescargarSalidaXml" class="btn btn-primary">Descargar salida.xml</a>
+    <a href="/Planificador/VerSistemaGrafico?nombreSistema=@nombreSistemaSeleccionado" class="btn btn-secondary">Ver Sistema de Drones</a>
+    <a href="/Planificador/DescargarSalidaXml?nombreMensaje=@nombreMensaje" class="btn btn-primary">Descargar salida.xml</a>
 </div>
 
 <div class="alert alert-info">
@@ -21,7 +54,7 @@
 
 <div id="graphviz-canvas" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; overflow: auto;"></div>
 
-<h2 style="margin-top: 1.5rem;">Codigo DOT</h2>
+<h2 style="margin-top: 1.5rem;">Código DOT</h2>
 <pre style="white-space: pre-wrap; background: #f8f9fa; padding: 1rem; border-radius: 8px; border: 1px solid #eee;">@dot</pre>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>

@@ -3,55 +3,65 @@ using EmisorDrones.CoreBusiness.TDAs;
 namespace EmisorDrones.CoreBusiness.Models
 {
     /// <summary>
-    /// Representa un dron con capacidad de movimiento vertical y emisión de luz.
-    /// Altura rango: 1 a 100 metros.
+    /// representa un dron que puede moverse hacia arriba y abajo y emitir luz
+    /// altura rango: 1 a 100 metros
     /// </summary>
     public class Drone
     {
         /// <summary>
-        /// Identificador único del dron
+        /// identificador único del dron
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Altura mínima operativa en metros (1-100)
+        /// nombre único del dron
+        /// </summary>
+        public string NombreDron { get; set; }
+
+        /// <summary>
+        /// altura mínima operativa en metros (1-100)
         /// </summary>
         public int AlturaMinima { get; set; }
 
         /// <summary>
-        /// Altura máxima operativa en metros (1-100)
+        /// altura máxima operativa en metros (1-100)
         /// </summary>
         public int AlturaMaxima { get; set; }
 
         /// <summary>
-        /// Altura actual en metros (comienza en AlturaMinima)
+        /// altura actual en metros (comienza en AlturaMinima)
         /// </summary>
         public int AlturaActual { get; set; }
 
         /// <summary>
-        /// Indica si el dron está activo o inactivo
+        /// indica si el dron está activo o inactivo
         /// </summary>
         public bool Activo { get; set; }
 
         /// <summary>
-        /// Historial de instrucciones ejecutadas por el dron
-        /// Usa TDA ListaEnlazada en lugar de List\<T\>
+        /// historial de instrucciones ejecutadas por el dron
+        /// usa TDA ListaEnlazada en lugar de List<T>
         /// </summary>
         public ListaEnlazada<Instruccion> HistorialInstrucciones { get; private set; }
 
         /// <summary>
-        /// Cantidad de veces que este dron ha emitido luz
+        /// cantidad de veces que este dron ha emitido luz
         /// </summary>
         public int VecesEmitioLuz { get; set; }
 
         /// <summary>
-        /// Constructor que inicializa un dron con valores específicos
+        /// constructor que inicializa un dron con valores específicos
         /// </summary>
-        /// <param name="id">Identificador único</param>
-        /// <param name="alturaMinima">Altura mínima en metros (validación 1-100)</param>
-        /// <param name="alturaMaxima">Altura máxima en metros (validación 1-100)</param>
-        /// <exception cref="ArgumentException">Si las alturas no están en rango válido</exception>
+        /// <param name="id">identificador único</param>
+        /// <param name="alturaMinima">altura mínima en metros (validación 1-100)</param>
+        /// <param name="alturaMaxima">altura máxima en metros (validación 1-100)</param>
+        /// <exception cref="ArgumentException">si las alturas no están en rango válido</exception>
         public Drone(int id, int alturaMinima, int alturaMaxima)
+            : this(id, "DRON-" + id, alturaMinima, alturaMaxima)
+        {
+        }
+
+        public Drone(int id, string nombreDron, int alturaMinima, int alturaMaxima)
         {
             if (alturaMinima < 1 || alturaMinima > 100)
                 throw new ArgumentException("Altura mínima debe estar entre 1 y 100");
@@ -62,7 +72,11 @@ namespace EmisorDrones.CoreBusiness.Models
             if (alturaMinima > alturaMaxima)
                 throw new ArgumentException("Altura mínima no puede ser mayor que altura máxima");
 
+            if (string.IsNullOrWhiteSpace(nombreDron))
+                throw new ArgumentException("El nombre del dron es obligatorio");
+
             this.Id = id;
+            this.NombreDron = nombreDron.Trim();
             this.AlturaMinima = alturaMinima;
             this.AlturaMaxima = alturaMaxima;
             this.AlturaActual = alturaMinima;
@@ -72,7 +86,7 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Sube el dron 1 metro si es posible
+        /// sube el dron 1 metro si es posible
         /// </summary>
         /// <returns>true si se ejecutó con éxito, false si está en altura máxima</returns>
         public bool Subir()
@@ -85,7 +99,7 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Baja el dron 1 metro si es posible
+        /// baja el dron 1 metro si es posible
         /// </summary>
         /// <returns>true si se ejecutó con éxito, false si está en altura mínima</returns>
         public bool Bajar()
@@ -98,9 +112,9 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Verifica si el dron está en la altura especificada
+        /// verifica si el dron está en la altura especificada
         /// </summary>
-        /// <param name="altura">Altura a verificar</param>
+        /// <param name="altura">altura a verificar</param>
         /// <returns>true si la altura actual coincide</returns>
         public bool EstaEnAltura(int altura)
         {
@@ -108,22 +122,22 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Calcula distancia que debe recorrer para llegar a una altura
+        /// calcula la distancia que debe recorrer para llegar a una altura
         /// </summary>
-        /// <param name="alturaDestino">Altura destino</param>
-        /// <returns>Cantidad de metros a subir (negativo si debe bajar)</returns>
+        /// <param name="alturaDestino">altura destino</param>
+        /// <returns>cantidad de metros a subir (negativo si debe bajar)</returns>
         public int CalcularDistancia(int alturaDestino)
         {
             if (alturaDestino < AlturaMinima || alturaDestino > AlturaMaxima)
-                return -1; // Altura inaccesible
+                return -1; // altura inaccesible
 
             return alturaDestino - AlturaActual;
         }
 
         /// <summary>
-        /// Verifica si el dron puede alcanzar una altura específica
+        /// verifica si el dron puede alcanzar una altura específica
         /// </summary>
-        /// <param name="altura">Altura destino</param>
+        /// <param name="altura">altura destino</param>
         /// <returns>true si la altura está en rango operativo</returns>
         public bool PuedeAlcanzarAltura(int altura)
         {
@@ -131,9 +145,9 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Registro de instrucción ejecutada por el dron
+        /// registro de instrucción ejecutada por el dron
         /// </summary>
-        /// <param name="instruccion">Instrucción a registrar</param>
+        /// <param name="instruccion">instrucción a registrar</param>
         public void RegistrarInstruccion(Instruccion instruccion)
         {
             if (instruccion == null)
@@ -154,7 +168,7 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Limpia el historial de instrucciones
+        /// limpia el historial de instrucciones
         /// </summary>
         public void LimpiarHistorial()
         {
@@ -163,20 +177,21 @@ namespace EmisorDrones.CoreBusiness.Models
         }
 
         /// <summary>
-        /// Retorna una representación de estado del dron
+        /// retorna una representación de estado del dron
         /// </summary>
         public override string ToString()
         {
-            return $"Dron {Id}: Altura={AlturaActual}m [{AlturaMinima}-{AlturaMaxima}], Activo={Activo}, Emisiones={VecesEmitioLuz}";
+            return $"Dron {Id} ({NombreDron}): Altura={AlturaActual}m [{AlturaMinima}-{AlturaMaxima}], Activo={Activo}, Emisiones={VecesEmitioLuz}";
         }
 
         /// <summary>
-        /// Obtiene estado detallado del dron para UI
+        /// obtiene estado detallado del dron para ui
         /// </summary>
         public string ObtenerEstadoDetallado()
         {
             return $@"
 Dron ID: {Id}
+Nombre: {NombreDron}
 Estado: {(Activo ? "Activo" : "Inactivo")}
 Altura Actual: {AlturaActual} m
 Rango Operativo: {AlturaMinima} - {AlturaMaxima} m

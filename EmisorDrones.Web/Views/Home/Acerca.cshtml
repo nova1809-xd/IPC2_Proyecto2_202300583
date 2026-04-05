@@ -4,164 +4,18 @@
 
 <h1>Acerca de - Emisor de Drones</h1>
 
-<h2>Descripcin del Proyecto</h2>
+<h2>Descripción del Proyecto</h2>
 
 <p>
-    Este proyecto es una solucin universitaria integrada para coordinar un sistema de drones que transmiten mensajes mediante emisin de luz.
-    Se trata de un ejercicio acadmico enfocado en arquitectura de software, estructuras de datos dinmicas y construccin de interfaces web modernas.
+    Este proyecto es una solución universitaria integrada para coordinar un sistema de drones que transmiten mensajes mediante emisión de luz.
+    Se trata de un ejercicio académico enfocado en arquitectura de software, estructuras de datos dinámicas y construcción de interfaces web modernas.
 </p>
-
-<h2>Objetivo</h2>
-
-<p>
-    Construir un sistema que permita:
-</p>
-
-<ul style="margin-left: 2rem; line-height: 1.8;">
-    <li>Gestionar hasta <strong>200 drones</strong>que operan en alturas entre 1 y 100 metros</li>
-    <li>Calcular la secuencia ptima de instrucciones para transmitir un mensaje en tiempo mnimo</li>
-    <li>Respetar la restriccin de que solo <strong>1 dron puede emitir luz por segundo</strong></li>
-    <li>Visualizar grficamente los sistemas de drones y sus instrucciones</li>
-    <li>Exportar resultados en formato XML</li>
-</ul>
-
-<h2>Restricciones Tcnicas (Reglas de Oro)</h2>
-
-<div style="background-color: #fff3cd; padding: 1.5rem; border-left: 4px solid #ff9800; border-radius: 4px; margin: 1rem 0;">
-    <ol style="margin-left: 2rem;">
-        <li>
-            <strong>PROHIBIDO usar estructuras de datos nativas:</strong>
-            Se implementan todos los TDAs (Lista, Cola, Pila, etc.) desde cero usando nodos y punteros.
-            <em style="color: #666;">No se usa: List\<T\>, LinkedList\<T\>, Queue\<T\>, Stack\<T\>, Dictionary\<K,V\></em>
-        </li>
-        <li>
-            <strong>Programacin Orientada a Objetos obligatoria:</strong>
-            Arquitectura modular con herencia, interfaces y encapsulamiento.
-        </li>
-        <li>
-            <strong>Interfaz web requerida:</strong>
-            ASP.NET Core con patrn MVC para todas las interacciones.
-        </li>
-        <li>
-            <strong>Graphviz obligatorio:</strong>
-            Generacin de grficos DOT para visualizacion de sistemas e instrucciones.
-        </li>
-    </ol>
+<div style="margin-top: 1.5rem; padding: 1rem; border: 1px solid #000000; border-radius: 0;">
+    <h2>Datos del Estudiante</h2>
+    <p><strong>Nombre:</strong> Angel Sebastian Mazariegos Pérez</p>
+    <p><strong>Carné:</strong> 202300583</p>
+    <p><a href="#" class="btn btn-primary">Ver Documentación</a></p>
 </div>
-
-<h2>Arquitectura en 4 Releases</h2>
-
-<div style="margin: 1.5rem 0;">
-    <h3>Release 1: Fundacin (En Desarrollo )</h3>
-    <p><strong>Objetivo:</strong>Infraestructura base y gestin de drones</p>
-    <ul style="margin-left: 2rem;">
-        <li>Implementacin de TDAs: NodoGenrico, ListaEnlazada, ColaDinamica, PilaDinamica</li>
-        <li>Clases de negocio: Drone, Instruccion, RegistroDrone</li>
-        <li>Servicio de gestin de drones (CRUD)</li>
-        <li>Interfaz web: Dashboard bsico, gestin de drones</li>
-    </ul>
-</div>
-
-<div style="margin: 1.5rem 0;">
-    <h3>Release 2: Sistemas de Mapeo (Prximo)</h3>
-    <p><strong>Objetivo:</strong>Configuracin de letras a alturas</p>
-    <ul style="margin-left: 2rem;">
-        <li>TDAs para mapeo: NodoMapa, MapaDinamico, NodoGrafo</li>
-        <li>Sistema de configuracin: SistemaDrones, MapeoLetra, Validacin</li>
-        <li>Visualizacin Graphviz de relaciones letraalturadron</li>
-    </ul>
-</div>
-
-<div style="margin: 1.5rem 0;">
-    <h3>Release 3: Procesamiento (Prximo)</h3>
-    <p><strong>Objetivo:</strong>Algoritmo de optimizacin</p>
-    <ul style="margin-left: 2rem;">
-        <li>TDAs para grafos: GrafoDAG, MatrizDinamica</li>
-        <li>Algoritmo de coordinacion que calcula tiempo mnimo</li>
-        <li>Simulador de pre-visualizacin</li>
-    </ul>
-</div>
-
-<div style="margin: 1.5rem 0;">
-    <h3>Release 4: Visualizacin (Prximo)</h3>
-    <p><strong>Objetivo:</strong>Simulacin visual y exportacin</p>
-    <ul style="margin-left: 2rem;">
-        <li>Simulacin paso a paso con visualizacion en tiempo real</li>
-        <li>Grficos Graphviz avanzados: Timeline, Heatmaps</li>
-        <li>Exportacin a XML con detalles segundo a segundo</li>
-    </ul>
-</div>
-
-<h2>Stack Tecnolgico</h2>
-
-<table style="width: 100%; margin: 1rem 0;">
-    <tr>
-        <td style="font-weight: bold; width: 30%;">Lenguaje:</td>
-        <td>C# 12+</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Framework Web:</td>
-        <td>ASP.NET Core 8.0+</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Patrn:</td>
-        <td>MVC (Model-View-Controller)</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Base de Datos:</td>
-        <td>En memoria (Scoped Services)</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Visualizacin:</td>
-        <td>Graphviz (Formato DOT)</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Formato Salida:</td>
-        <td>XML</td>
-    </tr>
-</table>
-
-<h2>Rol: Tutor Senior</h2>
-
-<p>
-    El asistente acta como Arquitecto de Software y Tutor Senior especializado en C# y desarrollo web.
-    Su responsabilidad es:
-</p>
-
-<ul style="margin-left: 2rem;">
-    <li>Guiar el desarrollo paso a paso mediante instrucciones claras</li>
-    <li>Validar que se cumplan las restricciones tcnicas</li>
-    <li>Explicar decisiones arquitectnicas y patrones</li>
-    <li>Prevenir deudas tcnicas y errores graves</li>
-    <li>Fomentar mejores prcticas en POO y diseo</li>
-</ul>
-
-<h2>Informacin General</h2>
-
-<table>
-    <tr>
-        <td style="font-weight: bold; width: 30%;">Asignatura:</td>
-        <td>IPC2 (Introduccin a Programacin de Computadores 2)</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Proyecto:</td>
-        <td>Proyecto 2 - Emisor de Drones</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Carn Estudiante:</td>
-        <td>202300583</td>
-    </tr>
-    <tr>
-        <td style="font-weight: bold;">Ao Acadmico:</td>
-        <td>2026</td>
-    </tr>
-</table>
-
-<hr style="margin: 2rem 0;">
-
-<p style="text-align: center; color: #666; font-size: 0.9rem;">
-    &copy; 2026 - Proyecto Acadmico | Emisor de Drones | Desarrollo Universitario
-</p>
 
 
 

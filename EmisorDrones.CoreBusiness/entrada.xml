@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <listaDrones>
+    <dron>AlfaDron</dron>
+    <dron>BetaDron</dron>
+    <dron>GammaDron</dron>
+    <dron>DeltaDron</dron>
+    <dron>ZetaDron</dron>
+  </listaDrones>
+
+  <listaSistemasDrones>
+    <sistemaDrones nombre="SistemaNorte">
+      <alturaMaxima>5</alturaMaxima>
+      <cantidadDrones>3</cantidadDrones>
+      <contenido>
+        <dron>AlfaDron</dron>
+        <alturas>
+          <altura valor="1">A</altura>
+          <altura valor="2">B</altura>
+          <altura valor="3">C</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>BetaDron</dron>
+        <alturas>
+          <altura valor="2">D</altura>
+          <altura valor="3">E</altura>
+          <altura valor="4">F</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>ZetaDron</dron>
+        <alturas>
+          <altura valor="1">G</altura>
+          <altura valor="4">H</altura>
+          <altura valor="5">I</altura>
+        </alturas>
+      </contenido>
+    </sistemaDrones>
+
+    <sistemaDrones nombre="SistemaSur">
+      <alturaMaxima>6</alturaMaxima>
+      <cantidadDrones>2</cantidadDrones>
+      <contenido>
+        <dron>GammaDron</dron>
+        <alturas>
+          <altura valor="1">J</altura>
+          <altura valor="3">K</altura>
+          <altura valor="6">L</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>DeltaDron</dron>
+        <alturas>
+          <altura valor="2">M</altura>
+          <altura valor="4">N</altura>
+          <altura valor="5">O</altura>
+        </alturas>
+      </contenido>
+    </sistemaDrones>
+
+    <sistemaDrones nombre="SistemaMixto">
+      <alturaMaxima>4</alturaMaxima>
+      <cantidadDrones>4</cantidadDrones>
+      <contenido>
+        <dron>AlfaDron</dron>
+        <alturas>
+          <altura valor="1">P</altura>
+          <altura valor="2">Q</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>GammaDron</dron>
+        <alturas>
+          <altura valor="2">R</altura>
+          <altura valor="3">S</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>ZetaDron</dron>
+        <alturas>
+          <altura valor="3">T</altura>
+          <altura valor="4">U</altura>
+        </alturas>
+      </contenido>
+      <contenido>
+        <dron>DeltaDron</dron>
+        <alturas>
+          <altura valor="1">V</altura>
+          <altura valor="4">W</altura>
+        </alturas>
+      </contenido>
+    </sistemaDrones>
+  </listaSistemasDrones>
+
+  <listaMensajes>
+    <Mensaje nombre="MensajeNorte_01">
+      <sistemaDrones>SistemaNorte</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="AlfaDron">1</instruccion>
+        <instruccion dron="BetaDron">4</instruccion>
+        <instruccion dron="ZetaDron">5</instruccion>
+      </instrucciones>
+    </Mensaje>
+
+    <Mensaje nombre="MensajeNorte_02">
+      <sistemaDrones>SistemaNorte</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="BetaDron">2</instruccion>
+        <instruccion dron="AlfaDron">3</instruccion>
+      </instrucciones>
+    </Mensaje>
+
+    <Mensaje nombre="MensajeSur_01">
+      <sistemaDrones>SistemaSur</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="GammaDron">6</instruccion>
+        <instruccion dron="DeltaDron">4</instruccion>
+      </instrucciones>
+    </Mensaje>
+
+    <Mensaje nombre="MensajeMixto_01">
+      <sistemaDrones>SistemaMixto</sistemaDrones>
+      <instrucciones>
+        <instruccion dron="AlfaDron">2</instruccion>
+        <instruccion dron="GammaDron">3</instruccion>
+        <instruccion dron="ZetaDron">4</instruccion>
+        <instruccion dron="DeltaDron">1</instruccion>
+      </instrucciones>
+    </Mensaje>
+  </listaMensajes>
+</config>

@@ -1,19 +1,18 @@
 namespace EmisorDrones.CoreBusiness.TDAs
 {
     /// <summary>
-    /// Cola de prioridad FIFO (First In First Out) implementada con lista enlazada.
-    /// Restricción: No usa Queue\<T\> de C#.
+    /// cola que funciona primero-entra-primero-sale, implementada manualmente sin usar Queue de C#
     /// </summary>
-    /// <typeparam name="T">Tipo de dato almacenado en la cola</typeparam>
+    /// <typeparam name="T">tipo de dato almacenado en la cola</typeparam>
     public class ColaDinamica<T>
     {
         /// <summary>
-        /// Lista interna que almacena los elementos
+        /// lista interna que almacena los elementos
         /// </summary>
         private ListaEnlazada<T> elementos;
 
         /// <summary>
-        /// Constructor que inicializa cola vacía
+        /// constructor que inicializa cola vacía
         /// </summary>
         public ColaDinamica()
         {
@@ -21,28 +20,28 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Obtiene la cantidad de elementos en la cola
+        /// obtiene la cantidad de elementos en la cola
         /// </summary>
         public int Cantidad => elementos.Cantidad;
 
         /// <summary>
-        /// Verifica si la cola está vacía
+        /// verifica si la cola está vacía
         /// </summary>
         public bool EstaVacia => elementos.EstaVacia;
 
         /// <summary>
-        /// Encola un elemento al final de la cola (rear)
+        /// agrega un elemento al final de la cola
         /// </summary>
-        /// <param name="dato">Elemento a encolar</param>
+        /// <param name="dato">elemento a encolar</param>
         public void Encolar(T dato)
         {
             elementos.AgregarAlFinal(dato);
         }
 
         /// <summary>
-        /// Desencola y retorna el primer elemento (front) de la cola
+        /// saca y retorna el primer elemento de la cola
         /// </summary>
-        /// <returns>Primer elemento de la cola</returns>
+        /// <returns>primer elemento de la cola</returns>
         public T Desencolar()
         {
             if (EstaVacia)
@@ -52,9 +51,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna el primer elemento sin eliminarlo
+        /// retorna el primer elemento sin eliminarlo
         /// </summary>
-        /// <returns>Primer elemento de la cola</returns>
+        /// <returns>primer elemento de la cola</returns>
         public T Frente()
         {
             if (EstaVacia)
@@ -64,9 +63,9 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna el último elemento sin eliminarlo
+        /// retorna el último elemento sin eliminarlo
         /// </summary>
-        /// <returns>Último elemento de la cola</returns>
+        /// <returns>último elemento de la cola</returns>
         public T Fondo()
         {
             if (EstaVacia)
@@ -76,7 +75,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Vacía completamente la cola
+        /// vacía completamente la cola
         /// </summary>
         public void Limpiar()
         {
@@ -84,7 +83,7 @@ namespace EmisorDrones.CoreBusiness.TDAs
         }
 
         /// <summary>
-        /// Retorna una representación en texto de la cola
+        /// retorna una representación en texto de la cola
         /// </summary>
         public override string ToString()
         {

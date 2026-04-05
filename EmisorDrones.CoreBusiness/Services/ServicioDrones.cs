@@ -4,24 +4,24 @@ using EmisorDrones.CoreBusiness.Models;
 namespace EmisorDrones.CoreBusiness.Services
 {
     /// <summary>
-    /// Servicio para gestionar el banco de drones del sistema.
-    /// Capacidad máxima: 200 drones.
-    /// Usa TDA ListaEnlazada en lugar de List\<T\>.
+    /// servicio para gestionar el banco de drones del sistema.
+    /// capacidad máxima: 200 drones.
+    /// usa TDA ListaEnlazada en lugar de List<T>.
     /// </summary>
     public class ServicioDrones
     {
         /// <summary>
-        /// Capacidad máxima de drones del sistema
+        /// capacidad máxima de drones del sistema
         /// </summary>
         private const int CAPACIDAD_MAXIMA = 200;
 
         /// <summary>
-        /// Lista dinámica que almacena todos los drones
+        /// lista dinámica que almacena todos los drones
         /// </summary>
         private ListaEnlazada<Drone> drones;
 
         /// <summary>
-        /// Constructor que inicializa el servicio
+        /// constructor que inicializa el servicio
         /// </summary>
         public ServicioDrones()
         {
@@ -29,19 +29,19 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Obtiene cantidad de drones registrados
+        /// obtiene cantidad de drones registrados
         /// </summary>
         public int CantidadDrones => drones.Cantidad;
 
         /// <summary>
-        /// Verifica si hay capacidad para más drones
+        /// verifica si hay capacidad para más drones
         /// </summary>
         public bool TieneCapacidad => drones.Cantidad < CAPACIDAD_MAXIMA;
 
         /// <summary>
-        /// Agrega un nuevo dron al sistema
+        /// agrega un nuevo dron al sistema
         /// </summary>
-        /// <param name="dron">Dron a agregar</param>
+        /// <param name="dron">dron a agregar</param>
         /// <returns>true si se agregó con éxito, false si no hay capacidad o ID duplicado</returns>
         public bool AgregarDron(Drone dron)
         {
@@ -51,8 +51,12 @@ namespace EmisorDrones.CoreBusiness.Services
             if (!TieneCapacidad)
                 return false;
 
-            // Verificar que no existe dron con mismo ID
+            // verificar que no haya un dron con el mismo ID
             if (ExisteDronConId(dron.Id))
+                return false;
+
+            // verificar que no haya un dron con el mismo nombre
+            if (ExisteDronConNombre(dron.NombreDron))
                 return false;
 
             drones.AgregarAlFinal(dron);
@@ -60,9 +64,9 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Obtiene un dron por su ID
+        /// obtiene un dron por su id
         /// </summary>
-        /// <param name="id">ID del dron a obtener</param>
+        /// <param name="id">id del dron a obtener</param>
         /// <returns>Dron encontrado o null</returns>
         public Drone ObtenerDronPorId(int id)
         {
@@ -80,7 +84,7 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Obtiene todos los drones del sistema
+        /// obtiene todos los drones del sistema
         /// </summary>
         /// <returns>lista enlazada con los drones del sistema</returns>
         public ListaEnlazada<Drone> ObtenerTodosDrones()
@@ -89,19 +93,37 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Verifica si existe un dron con un ID específico
+        /// verifica si existe un dron con un id específico
         /// </summary>
-        /// <param name="id">ID a verificar</param>
+        /// <param name="id">id a verificar</param>
         /// <returns>true si existe, false en caso contrario</returns>
         public bool ExisteDronConId(int id)
         {
             return ObtenerDronPorId(id) != null;
         }
 
+        public bool ExisteDronConNombre(string nombreDron)
+        {
+            if (string.IsNullOrWhiteSpace(nombreDron))
+                return false;
+
+            NodoGenerico<Drone> actual = drones.Cabeza;
+
+            while (actual != null)
+            {
+                if (string.Equals(actual.Dato.NombreDron, nombreDron, StringComparison.OrdinalIgnoreCase))
+                    return true;
+
+                actual = actual.Siguiente;
+            }
+
+            return false;
+        }
+
         /// <summary>
-        /// Obtiene drones que pueden alcanzar una altura específica
+        /// obtiene drones que pueden alcanzar una altura específica
         /// </summary>
-        /// <param name="altura">Altura a verificar</param>
+        /// <param name="altura">altura a verificar</param>
         /// <returns>lista enlazada de drones que pueden alcanzar la altura</returns>
         public ListaEnlazada<Drone> ObtenerDronesQuePuedenAlcanzarAltura(int altura)
         {
@@ -120,9 +142,9 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Elimina un dron del sistema por su ID
+        /// elimina un dron del sistema por su id
         /// </summary>
-        /// <param name="id">ID del dron a eliminar</param>
+        /// <param name="id">id del dron a eliminar</param>
         /// <returns>true si se eliminó, false si no existe</returns>
         public bool EliminarDron(int id)
         {
@@ -145,7 +167,7 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Verifica si todos los drones están en rango de alturas válidas
+        /// verifica si todos los drones están en rango de alturas válidas
         /// </summary>
         /// <returns>true si sistema es válido</returns>
         public bool ValidarSistema()
@@ -169,7 +191,7 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Limpia todos los drones del sistema
+        /// limpia todos los drones del sistema
         /// </summary>
         public void LimpiarTodos()
         {
@@ -177,7 +199,7 @@ namespace EmisorDrones.CoreBusiness.Services
         }
 
         /// <summary>
-        /// Obtiene un resumen informativo del servicio
+        /// obtiene un resumen informativo del servicio
         /// </summary>
         public string ObtenerResumen()
         {
